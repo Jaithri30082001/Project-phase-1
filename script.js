@@ -17,6 +17,8 @@ const overview_css = fs.readFileSync(`${__dirname}/style.css`, "utf-8");
 // about
 const about_html = fs.readFileSync(`${__dirname}/about/about.html`, "utf-8");
 const about_css = fs.readFileSync(`${__dirname}/about/about.css`, "utf-8");
+const about_js = fs.readFileSync(`${__dirname}/about/about.js`, "utf-8");
+
 // resources
 const resources_html = fs.readFileSync(
   `${__dirname}/resources/resources.html`,
@@ -26,6 +28,13 @@ const resources_css = fs.readFileSync(
   `${__dirname}/resources/resources.css`,
   "utf-8"
 );
+const resources_js = fs.readFileSync(
+  `${__dirname}/resources/resources.js`,
+  "utf-8"
+);
+// const resources_data = fs.readFileSync(
+//   `${__dirname}/resources/resource_links.json`
+// );
 // placements
 const placements_html = fs.readFileSync(
   `${__dirname}/placements/placements.html`,
@@ -33,6 +42,10 @@ const placements_html = fs.readFileSync(
 );
 const placements_css = fs.readFileSync(
   `${__dirname}/placements/placements.css`,
+  "utf-8"
+);
+const placements_js = fs.readFileSync(
+  `${__dirname}/placements/placements.js`,
   "utf-8"
 );
 // higher studies
@@ -44,6 +57,10 @@ const higher_studies_css = fs.readFileSync(
   `${__dirname}/higher_studies/higher_studies.css`,
   "utf-8"
 );
+const higher_studies_js = fs.readFileSync(
+  `${__dirname}/higher_studies/higher_studies.js`,
+  "utf-8"
+);
 // faculty
 const faculty_html = fs.readFileSync(
   `${__dirname}/faculty/faculty.html`,
@@ -53,10 +70,11 @@ const faculty_css = fs.readFileSync(
   `${__dirname}/faculty/faculty.css`,
   "utf-8"
 );
+const faculty_js = fs.readFileSync(`${__dirname}/faculty/faculty.js`, "utf-8");
 // events
 const events_html = fs.readFileSync(`${__dirname}/events/events.html`, "utf-8");
 const events_css = fs.readFileSync(`${__dirname}/events/events.css`, "utf-8");
-
+const events_js = fs.readFileSync(`${__dirname}//events/events.js`, "utf-8");
 //=============================================================================================//
 const server = http.createServer((req, res) => {
   const { query, pathname } = url.parse(req.url, true);
@@ -78,6 +96,9 @@ const server = http.createServer((req, res) => {
   } else if (pathname === "/about/about.css") {
     res.writeHead(200, { "Content-type": "text/css" });
     res.end(about_css);
+  } else if (pathname === "/about/about.js") {
+    res.writeHead(200, { "Content-type": "application/javascript" });
+    res.end(about_js);
   }
 
   //===================================================================================//
@@ -90,6 +111,9 @@ const server = http.createServer((req, res) => {
   } else if (pathname === "/resources/resources.css") {
     res.writeHead(200, { "Content-type": "text/css" });
     res.end(resources_css);
+  } else if (pathname === "/resources/resources.js") {
+    res.writeHead(200, { "Content-type": "application/javascript" });
+    res.end(resources_js);
   }
 
   //=========================================================================================//
@@ -102,6 +126,9 @@ const server = http.createServer((req, res) => {
   } else if (pathname === "/placements/placements.css") {
     res.writeHead(200, { "Content-type": "text/css" });
     res.end(placements_css);
+  } else if (pathname === "/placements/placements.js") {
+    res.writeHead(200, { "Content-type": "application/javascript" });
+    res.end(placements_js);
   }
 
   //=========================================================================================//
@@ -114,6 +141,9 @@ const server = http.createServer((req, res) => {
   } else if (pathname === "/higher_studies/higher_studies.css") {
     res.writeHead(200, { "Content-type": "text/css" });
     res.end(higher_studies_css);
+  } else if (pathname === "/higher_studies/higher_studies.js") {
+    res.writeHead(200, { "Content-type": "application/javascript" });
+    res.end(higher_studies_js);
   }
 
   //==============================================================================================//
@@ -126,6 +156,9 @@ const server = http.createServer((req, res) => {
   } else if (pathname === "/faculty/faculty.css") {
     res.writeHead(200, { "Content-type": "text/css" });
     res.end(faculty_css);
+  } else if (pathname === "/faculty/faculty.js") {
+    res.writeHead(200, { "Content-type": "application/javascript" });
+    res.end(faculty_js);
   }
 
   //===========================================================================================//
@@ -137,6 +170,9 @@ const server = http.createServer((req, res) => {
   } else if (pathname === "/events/events.css") {
     res.writeHead(200, { "Content-type": "text/css" });
     res.end(events_css);
+  } else if (pathname === "/events/events.js") {
+    res.writeHead(200, { "Content-type": "application/javascript" });
+    res.end(events_js);
   }
 
   //==========================================================================================//
