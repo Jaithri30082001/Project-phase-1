@@ -9,145 +9,144 @@ const overview_html = fs.readFileSync(`${__dirname}/index.html`, "utf-8");
 const overview_css = fs.readFileSync(`${__dirname}/style.css`, "utf-8");
 const overview_js = fs.readFileSync(`${__dirname}/script.js`, "utf-8");
 
-// ===================================== ABOUT ===================================================================//
-
-const about_html = fs.readFileSync(`${__dirname}/about/about.html`, "utf-8");
-const about_css = fs.readFileSync(`${__dirname}/about/about.css`, "utf-8");
-const about_js = fs.readFileSync(`${__dirname}/about/about.js`, "utf-8");
-
-// ===================================== RESOURCES ===============================================================//
-
-let resources_html = fs.readFileSync(
-  `${__dirname}/resources/templates/resources_overview.html`,
-  "utf-8"
-);
-
-const resources_card = fs.readFileSync(
-  `${__dirname}/resources/templates/resources_card.html`,
-  "utf-8"
-);
-let resources_incard = fs.readFileSync(
-  `${__dirname}/resources/templates/resources_incard.html`,
-  "utf-8"
-);
-
-const resources_subdomains_card = fs.readFileSync(
-  `${__dirname}/resources/templates/resources_subdomains_card.html`,
-  "utf-8"
-);
-
-let resources_in_sub_domains_card = fs.readFileSync(
-  `${__dirname}/resources/templates/resources_in_sub_domains_card.html`,
-  "utf-8"
-);
-
-const resources_links_card = fs.readFileSync(
-  `${__dirname}/resources/templates/resources_links_card.html`,
-  "utf-8"
-);
-
-const resources_topics_card = fs.readFileSync(
-  `${__dirname}/resources/templates/resources_topics_card.html`,
-  "utf-8"
-);
-
-let resources_topics_in_sub_domains_card = fs.readFileSync(
-  `${__dirname}/resources/templates/resources_topics_in_sub_domains_card.html`,
-  "utf-8"
-);
-
-const resources_css = fs.readFileSync(
-  `${__dirname}/resources/resources.css`,
-  "utf-8"
-);
-
-const resources_json = fs.readFileSync(
-  `${__dirname}/resources/temp.json`,
-  "utf-8"
-);
-const resourcesObj = JSON.parse(resources_json);
-
-// =========================================== PLACEMENTS ======================================================= //
-const placements_html = fs.readFileSync(
-  `${__dirname}/placements/placements.html`,
-  "utf-8"
-);
-const placements_css = fs.readFileSync(
-  `${__dirname}/placements/placements.css`,
-  "utf-8"
-);
-const placements_js = fs.readFileSync(
-  `${__dirname}/placements/placements.js`,
-  "utf-8"
-);
-// ========================================= HIGHER STUDIES ===================================================== //
-const higher_studies_html = fs.readFileSync(
-  `${__dirname}/higher_studies/higher_studies.html`,
-  "utf-8"
-);
-const higher_studies_css = fs.readFileSync(
-  `${__dirname}/higher_studies/higher_studies.css`,
-  "utf-8"
-);
-const higher_studies_js = fs.readFileSync(
-  `${__dirname}/higher_studies/higher_studies.js`,
-  "utf-8"
-);
-// ============================================== FACULTY ======================================================= //
-const faculty_html = fs.readFileSync(
-  `${__dirname}/faculty/faculty.html`,
-  "utf-8"
-);
-const faculty_css = fs.readFileSync(
-  `${__dirname}/faculty/faculty.css`,
-  "utf-8"
-);
-const faculty_js = fs.readFileSync(`${__dirname}/faculty/faculty.js`, "utf-8");
-
-// ============================================================== EVENTS ============================================================== //
-
-const events_html = fs.readFileSync(`${__dirname}/events/events.html`, "utf-8");
-const events_css = fs.readFileSync(`${__dirname}/events/events.css`, "utf-8");
-const events_js = fs.readFileSync(`${__dirname}//events/events.js`, "utf-8");
-
-// ============================================ IMAGES HOME PAGE==============================================================//
-const campus_life_image = fs.readFileSync(
-  `${__dirname}/images/campus-life_01.png`
-);
-const about_image = fs.readFileSync(`${__dirname}/images/about-1.png`, "utf-8");
-const absyz_logo = fs.readFileSync(`${__dirname}/images/absyz.png`, "utf-8");
-const accenture_logo = fs.readFileSync(
-  `${__dirname}/images/accenture.png`,
-  "utf-8"
-);
-const tejas_logo = fs.readFileSync(`${__dirname}/images/tejas.png`, "utf-8");
-const alstom_logo = fs.readFileSync(`${__dirname}/images/alstom.png`, "utf-8");
-const deloitte_logo = fs.readFileSync(
-  `${__dirname}/images/deloitte.jpeg`,
-  "utf-8"
-);
-const micron_logo = fs.readFileSync(`${__dirname}/images/micron.png`, "utf-8");
-const chatbot_image = fs.readFileSync(
-  `${__dirname}/images/chatbot.png`,
-  "utf-8"
-);
-const search_image = fs.readFileSync(`${__dirname}/images/search.png`, "utf-8");
-console.log(`${__dirname}/images/search.png`);
-
-// ============================= IMAGES ABOUT PAGE ========================================//
-
-// const dropdown_image = fs.readFileSync(`${__dirname}/about/dropdown_menu.png`);
-// console.log(`${__dirname}/images/about/dropdown_menu.png`);
-// const faqs_image = fs.readFileSync(`${__dirname}/images/about/faqs.png`);
-// const introduction_image = fs.readFileSync(
-//   `${__dirname}/images/about/introduction_image.jpg`
-// );
-// const mission_statement_image_2 = fs.readFileSync(
-//   `${__dirname}/images/about/mission_statement_image_2.png`
-// );
-// ============================================ CREATE SERVER =================================================== //
-
+// ============================================== CREATE SERVER ======================================================= //
 const server = http.createServer((req, res) => {
+  // ===================================== ABOUT ===================================================================//
+
+  const about_html = fs.readFileSync(`${__dirname}/about/about.html`, "utf-8");
+  const about_css = fs.readFileSync(`${__dirname}/about/about.css`, "utf-8");
+  const about_js = fs.readFileSync(`${__dirname}/about/about.js`, "utf-8");
+
+  // ===================================== RESOURCES ===============================================================//
+
+  let resources_html = fs.readFileSync(
+    `${__dirname}/resources/templates/resources_overview.html`,
+    "utf-8"
+  );
+
+  const resources_card = fs.readFileSync(
+    `${__dirname}/resources/templates/resources_card.html`,
+    "utf-8"
+  );
+  let resources_incard = fs.readFileSync(
+    `${__dirname}/resources/templates/resources_incard.html`,
+    "utf-8"
+  );
+
+  const resources_subdomains_card = fs.readFileSync(
+    `${__dirname}/resources/templates/resources_subdomains_card.html`,
+    "utf-8"
+  );
+
+  let resources_in_sub_domains_card = fs.readFileSync(
+    `${__dirname}/resources/templates/resources_in_sub_domains_card.html`,
+    "utf-8"
+  );
+
+  const resources_links_card = fs.readFileSync(
+    `${__dirname}/resources/templates/resources_links_card.html`,
+    "utf-8"
+  );
+
+  const resources_topics_card = fs.readFileSync(
+    `${__dirname}/resources/templates/resources_topics_card.html`,
+    "utf-8"
+  );
+
+  let resources_topics_in_sub_domains_card = fs.readFileSync(
+    `${__dirname}/resources/templates/resources_topics_in_sub_domains_card.html`,
+    "utf-8"
+  );
+
+  const resources_css = fs.readFileSync(
+    `${__dirname}/resources/resources.css`,
+    "utf-8"
+  );
+
+  const resources_json = fs.readFileSync(
+    `${__dirname}/resources/temp.json`,
+    "utf-8"
+  );
+  const resourcesObj = JSON.parse(resources_json);
+
+  // =========================================== PLACEMENTS ======================================================= //
+  const placements_html = fs.readFileSync(
+    `${__dirname}/placements/placements.html`,
+    "utf-8"
+  );
+  const placements_css = fs.readFileSync(
+    `${__dirname}/placements/placements.css`,
+    "utf-8"
+  );
+  const placements_js = fs.readFileSync(
+    `${__dirname}/placements/placements.js`,
+    "utf-8"
+  );
+  // ========================================= HIGHER STUDIES ===================================================== //
+  const higher_studies_html = fs.readFileSync(
+    `${__dirname}/higher_studies/higher_studies.html`,
+    "utf-8"
+  );
+  const higher_studies_css = fs.readFileSync(
+    `${__dirname}/higher_studies/higher_studies.css`,
+    "utf-8"
+  );
+  const higher_studies_js = fs.readFileSync(
+    `${__dirname}/higher_studies/higher_studies.js`,
+    "utf-8"
+  );
+  // ============================================== FACULTY ======================================================= //
+  const faculty_html = fs.readFileSync(
+    `${__dirname}/faculty/faculty.html`,
+    "utf-8"
+  );
+  const faculty_css = fs.readFileSync(
+    `${__dirname}/faculty/faculty.css`,
+    "utf-8"
+  );
+  const faculty_js = fs.readFileSync(
+    `${__dirname}/faculty/faculty.js`,
+    "utf-8"
+  );
+
+  // ============================================================== EVENTS ============================================================ //
+
+  const events_html = fs.readFileSync(
+    `${__dirname}/events/events.html`,
+    "utf-8"
+  );
+  const events_css = fs.readFileSync(`${__dirname}/events/events.css`, "utf-8");
+  const events_js = fs.readFileSync(`${__dirname}//events/events.js`, "utf-8");
+
+  // ============================================ IMAGES HOME PAGE==============================================================//
+  const campus_life_image = fs.readFileSync(
+    `${__dirname}/images/campus-life_01.png`
+  );
+  const about_image = fs.readFileSync(`${__dirname}/images/about-1.png`);
+  const absyz_logo = fs.readFileSync(`${__dirname}/images/absyz.png`, "utf-8");
+  const accenture_logo = fs.readFileSync(`${__dirname}/images/accenture.png`);
+  const tejas_logo = fs.readFileSync(`${__dirname}/images/tejas.png`);
+  const alstom_logo = fs.readFileSync(`${__dirname}/images/alstom.png`);
+  const deloitte_logo = fs.readFileSync(`${__dirname}/images/deloitte.jpeg`);
+  const micron_logo = fs.readFileSync(`${__dirname}/images/micron.png`);
+  const chatbot_image = fs.readFileSync(`${__dirname}/images/chatbot.png`);
+  const search_image = fs.readFileSync(`${__dirname}/images/search.png`);
+  // console.log(`${__dirname}/images/search.png`);
+
+  // ============================= IMAGES ABOUT PAGE ========================================//
+
+  const dropdown_image = fs.readFileSync(
+    `${__dirname}/images/about/dropdown-menu.png`
+  );
+  const faqs_image = fs.readFileSync(`${__dirname}/images/about/faqs.png`);
+  const introduction_image = fs.readFileSync(
+    `${__dirname}/images/about/introduction_image.jpg`
+  );
+  const mission_statement_image_2 = fs.readFileSync(
+    `${__dirname}/images/about/mission_statement_image_2.jpg`
+  );
+  // ============================================ DESTRUCTURING THE QUERY =================================================== //
+
   const { query, pathname } = url.parse(req.url, true);
 
   // ========================================== HOME PAGE ======================================================= //
@@ -161,7 +160,10 @@ const server = http.createServer((req, res) => {
   } else if (pathname === "/script.js") {
     res.writeHead(200, { "Content-type": "application/javascript" });
     res.end(overview_js);
-  } else if (pathname === "/images/search.png") {
+  }
+
+  // ================================== SENDING IMAGES (HOME PAGE)============================ //
+  else if (pathname === "/images/search.png") {
     res.writeHead(200, { "Content-Type": "image/png" });
     res.end(search_image);
   } else if (pathname === "/images/campus-life_01.png") {
@@ -205,6 +207,20 @@ const server = http.createServer((req, res) => {
     res.end(about_js);
   }
 
+  // =============================== SENDING IMAGES ABOUT PAGE =============================== //
+  else if (pathname === "/images/about/dropdown-menu.png") {
+    res.writeHead(200, { "Content-Type": "image/png" });
+    res.end(dropdown_image);
+  } else if (pathname === "/images/about/introduction_image.jpg") {
+    res.writeHead(200, { "Content-Type": "image/jpg" });
+    res.end(introduction_image);
+  } else if (pathname === "/images/about/mission_statement_image_2.jpg") {
+    res.writeHead(200, { "Content-Type": "image/jpg" });
+    res.end(mission_statement_image_2);
+  } else if (pathname === "/images/about/faqs.png") {
+    res.writeHead(200, { "Content-Type": "image/png" });
+    res.end(faqs_image);
+  }
   //======================================== RESOURCES PAGE=======================================================//
   else if (pathname === "/resources") {
     // ======================================READING  JSON FILE ================================================= //
@@ -232,16 +248,10 @@ const server = http.createServer((req, res) => {
 
     // ======================================== SUB DOMAINS ======================================================//
     else if (Object.keys(query).length === 1) {
-      // ================================== SUB DOMAINS OBJECT ARRAY  (not working)=============================================//
-      // // console.log(query.domain_id);
-      // const subdomainObj = resourcesObj.find(
-      //   (obj) => obj.domain_id.toLowerCase() === query.domain_id.toLowerCase()
-      // );
-      // console.log(subdomainObj);
+      // ================================== SUB DOMAINS OBJECT ARRAY =============================================//
 
       const subdomainObjectsArray =
         resourcesObj[query.domain_id]["sub_domains"];
-
       // ============================ ADDING THE DATA TO THE CARD CREATED ======================================= //
 
       const subdomainCardsHTML = subdomainObjectsArray
@@ -261,6 +271,10 @@ const server = http.createServer((req, res) => {
           return output;
         })
         .join("");
+      console.log(
+        "/////////////////////////////// THE CARD //////////////////////////////////////////////////////"
+      );
+      console.log(subdomainCardsHTML);
 
       // ================== REPLACING THE SUB_DOMAINS_CARDS WITH THE CREATED CARD (DATA ADDED) ================== //
 
@@ -268,6 +282,10 @@ const server = http.createServer((req, res) => {
         /{%SUB_DOMAIN_CARDS%}/g,
         subdomainCardsHTML
       );
+      console.log(
+        "////////////////////////////////// RESOURCES IN CARD FILE /////////////////////////////////////////////////"
+      );
+      console.log(resources_incard);
 
       // ================================== REPLACING THE DOMAIN_NAME =========================================== //
 
@@ -275,7 +293,7 @@ const server = http.createServer((req, res) => {
         /{%DOMAIN_NAME%}/g,
         resourcesObj[query.domain_id]["domain_name"]
       );
-      // console.log(subdomainObjectsArray);
+
       console.log("I am at length 1");
       res.end(resources_incard);
     }

@@ -958,7 +958,7 @@
       }
     ]
   },
-  "front_end": {
+  "front-end": {
     "domain_id": "front-end",
     "domain_name": "Front End Web development",
     "domain_number": 3,
