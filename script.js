@@ -1,11 +1,13 @@
 const fs = require("fs");
 const http = require("http");
+const path = require("path");
 const url = require("url");
 const replace_card = require(`${__dirname}/resources/replace_card`);
 //========================================= OVERVIEW =============================================================//
 
 const overview_html = fs.readFileSync(`${__dirname}/index.html`, "utf-8");
 const overview_css = fs.readFileSync(`${__dirname}/style.css`, "utf-8");
+const overview_js = fs.readFileSync(`${__dirname}/script.js`, "utf-8");
 
 // ===================================== ABOUT ===================================================================//
 
@@ -102,12 +104,47 @@ const faculty_css = fs.readFileSync(
 );
 const faculty_js = fs.readFileSync(`${__dirname}/faculty/faculty.js`, "utf-8");
 
-// ============================================= EVENTS ========================================================= //
+// ============================================================== EVENTS ============================================================== //
 
 const events_html = fs.readFileSync(`${__dirname}/events/events.html`, "utf-8");
 const events_css = fs.readFileSync(`${__dirname}/events/events.css`, "utf-8");
 const events_js = fs.readFileSync(`${__dirname}//events/events.js`, "utf-8");
 
+// ============================================ IMAGES HOME PAGE==============================================================//
+const campus_life_image = fs.readFileSync(
+  `${__dirname}/images/campus-life_01.png`
+);
+const about_image = fs.readFileSync(`${__dirname}/images/about-1.png`, "utf-8");
+const absyz_logo = fs.readFileSync(`${__dirname}/images/absyz.png`, "utf-8");
+const accenture_logo = fs.readFileSync(
+  `${__dirname}/images/accenture.png`,
+  "utf-8"
+);
+const tejas_logo = fs.readFileSync(`${__dirname}/images/tejas.png`, "utf-8");
+const alstom_logo = fs.readFileSync(`${__dirname}/images/alstom.png`, "utf-8");
+const deloitte_logo = fs.readFileSync(
+  `${__dirname}/images/deloitte.jpeg`,
+  "utf-8"
+);
+const micron_logo = fs.readFileSync(`${__dirname}/images/micron.png`, "utf-8");
+const chatbot_image = fs.readFileSync(
+  `${__dirname}/images/chatbot.png`,
+  "utf-8"
+);
+const search_image = fs.readFileSync(`${__dirname}/images/search.png`, "utf-8");
+console.log(`${__dirname}/images/search.png`);
+
+// ============================= IMAGES ABOUT PAGE ========================================//
+
+// const dropdown_image = fs.readFileSync(`${__dirname}/about/dropdown_menu.png`);
+console.log(`${__dirname}/images/about/dropdown_menu.png`);
+// const faqs_image = fs.readFileSync(`${__dirname}/images/about/faqs.png`);
+// const introduction_image = fs.readFileSync(
+//   `${__dirname}/images/about/introduction_image.jpg`
+// );
+// const mission_statement_image_2 = fs.readFileSync(
+//   `${__dirname}/images/about/mission_statement_image_2.png`
+// );
 // ============================================ CREATE SERVER =================================================== //
 
 const server = http.createServer((req, res) => {
@@ -121,6 +158,39 @@ const server = http.createServer((req, res) => {
   } else if (pathname === "/style.css") {
     res.writeHead(200, { "Content-type": "text/css" });
     res.end(overview_css);
+  } else if (pathname === "/script.js") {
+    res.writeHead(200, { "Content-type": "application/javascript" });
+    res.end(overview_js);
+  } else if (pathname === "/images/search.png") {
+    res.writeHead(200, { "Content-Type": "image/png" });
+    res.end(search_image);
+  } else if (pathname === "/images/campus-life_01.png") {
+    res.writeHead(200, { "Content-Type": "image/png" });
+    res.end(campus_life_image);
+  } else if (pathname === "/images/about-1.png") {
+    res.writeHead(200, { "Content-Type": "image/png" });
+    res.end(about_image);
+  } else if (pathname === "/images/absyz.png") {
+    res.writeHead(200, { "Content-Type": "image/png" });
+    res.end(absyz_logo);
+  } else if (pathname === "/images/accenture.png") {
+    res.writeHead(200, { "Content-Type": "image/png" });
+    res.end(accenture_logo);
+  } else if (pathname === "/images/tejas.png") {
+    res.writeHead(200, { "Content-Type": "image/png" });
+    res.end(tejas_logo);
+  } else if (pathname === "/images/alstom.png") {
+    res.writeHead(200, { "Content-Type": "image/png" });
+    res.end(alstom_logo);
+  } else if (pathname === "/images/deloitte.jpeg") {
+    res.writeHead(200, { "Content-Type": "image/jpeg" });
+    res.end(deloitte_logo);
+  } else if (pathname === "/images/micron.png") {
+    res.writeHead(200, { "Content-Type": "image/png" });
+    res.end(micron_logo);
+  } else if (pathname === "/images/chatbot.png") {
+    res.writeHead(200, { "Content-Type": "image/png" });
+    res.end(chatbot_image);
   }
 
   //============================================ ABOUT PAGE ======================================================//
