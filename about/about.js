@@ -15,18 +15,18 @@
 //   });
 // }
 
-// let faqElements = document.querySelectorAll("#faq");
-// console.log(faqElements);
+let faqElements = document.querySelectorAll("#faq");
+console.log(faqElements);
 
-// for (let i of faqElements) {
-//   i.addEventListener("click", (event) => {
-//     if (event.target.nextElementSibling.style.maxHeight == 0) {
-//       event.target.nextElementSibling.style.maxHeight =
-//         event.target.nextElementSibling.scrollHeight + "px";
-//     } else {
-//       event.target.nextElementSibling.style.maxHeight = "";
-//     }
-//   });
-// }
+for (let i of faqElements) {
+  i.addEventListener("click", (event) => {
+    if (event.target.nextElementSibling.style.maxHeight == 0) {
+      event.target.nextElementSibling.style.maxHeight =
+        event.target.nextElementSibling.scrollHeight + "px";
+    } else {
+      event.target.nextElementSibling.style.maxHeight = "";
+    }
+  });
+}
 
 console.log("about page testing");
