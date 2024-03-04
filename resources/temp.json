@@ -361,24 +361,30 @@
       {
         "sub_domain_id": "trees",
         "sub_domain_name": "Trees",
-        "links": [
-          {
-            "link_id": "tree-l1",
-            "link_name": "Tree Data structure - GFG",
-            "link": "https://www.geeksforgeeks.org/introduction-to-tree-data-structure-and-algorithm-tutorials/"
-          },
-          {
-            "link_id": "tree-l2",
-            "link_name": "Trees - Illustrated Data structure",
-            "link": "https://www.youtube.com/watch?v=S2W3SXGPVyU"
-          },
-          {
-            "link_id": "tree-l2",
-            "link_name": "Trees - Illustrated Data structure",
-            "link": "https://www.youtube.com/watch?v=S2W3SXGPVyU"
-          }
-        ],
+
         "topics": [
+          {
+            "topic_id": "basics-of-trees",
+            "topic_name": "Basics of trees",
+            "links": [
+              {
+                "link_id": "tree-l1",
+                "link_name": "Tree Data structure - GFG",
+                "link": "https://www.geeksforgeeks.org/introduction-to-tree-data-structure-and-algorithm-tutorials/"
+              },
+              {
+                "link_id": "tree-l2",
+                "link_name": "Trees - Illustrated Data structure",
+                "link": "https://www.youtube.com/watch?v=S2W3SXGPVyU"
+              },
+              {
+                "link_id": "tree-l2",
+                "link_name": "Trees - Illustrated Data structure",
+                "link": "https://www.youtube.com/watch?v=S2W3SXGPVyU"
+              }
+            ]
+          },
+
           {
             "topic_id": "binary-tree",
             "topic_name": "Binary Tree",
@@ -548,34 +554,40 @@
       {
         "sub_domain_id": "graphs",
         "sub_domain_name": "Graphs",
-        "links": [
-          {
-            "link_id": "graph-l1",
-            "link_name": "Graph Data Structure",
-            "link": "https://www.simplilearn.com/tutorials/data-structure-tutorial/graphs-in-data-structure"
-          },
-          {
-            "link_id": "graph-l2",
-            "link_name": "Graph Data Structure | Illustrated Data Structures",
-            "link": "https://www.youtube.com/watch?v=0sQE8zKhad0"
-          },
-          {
-            "link_id": "graph-l3",
-            "link_name": "CSE373 2020 - Lecture 10 - Graph Data Structures",
-            "link": "https://www.youtube.com/watch?v=Sjk0xqWWPCc&list=PLOtl7M3yp-DX6ic0HGT0PUX_wiNmkWkXx&index=10"
-          },
-          {
-            "link_id": "graph-l4",
-            "link_name": "CSE373 2020 - Lecture 11 - Graph Traversal",
-            "link": "https://www.youtube.com/watch?v=ZTwjXj81NVY&list=PLOtl7M3yp-DX6ic0HGT0PUX_wiNmkWkXx&index=11"
-          },
-          {
-            "link_id": "graph-l5",
-            "link_name": "CSE373 2020 - Lecture 12 - Depth First Search",
-            "link": "https://www.youtube.com/watch?v=KyordYB3BOs&list=PLOtl7M3yp-DX6ic0HGT0PUX_wiNmkWkXx&index=12"
-          }
-        ],
+
         "topics": [
+          {
+            "topic_id": "basics-of-graph",
+            "topic_name": "Basics of Graphs",
+            "links": [
+              {
+                "link_id": "graph-l1",
+                "link_name": "Graph Data Structure",
+                "link": "https://www.simplilearn.com/tutorials/data-structure-tutorial/graphs-in-data-structure"
+              },
+              {
+                "link_id": "graph-l2",
+                "link_name": "Graph Data Structure | Illustrated Data Structures",
+                "link": "https://www.youtube.com/watch?v=0sQE8zKhad0"
+              },
+              {
+                "link_id": "graph-l3",
+                "link_name": "CSE373 2020 - Lecture 10 - Graph Data Structures",
+                "link": "https://www.youtube.com/watch?v=Sjk0xqWWPCc&list=PLOtl7M3yp-DX6ic0HGT0PUX_wiNmkWkXx&index=10"
+              },
+              {
+                "link_id": "graph-l4",
+                "link_name": "CSE373 2020 - Lecture 11 - Graph Traversal",
+                "link": "https://www.youtube.com/watch?v=ZTwjXj81NVY&list=PLOtl7M3yp-DX6ic0HGT0PUX_wiNmkWkXx&index=11"
+              },
+              {
+                "link_id": "graph-l5",
+                "link_name": "CSE373 2020 - Lecture 12 - Depth First Search",
+                "link": "https://www.youtube.com/watch?v=KyordYB3BOs&list=PLOtl7M3yp-DX6ic0HGT0PUX_wiNmkWkXx&index=12"
+              }
+            ]
+          },
+
           {
             "topic_id": "directed-graph",
             "topic_name": "Directed graph",

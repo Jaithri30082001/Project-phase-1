@@ -2,21 +2,19 @@ const fs = require("fs");
 const http = require("http");
 const url = require("url");
 const replace_card = require(`${__dirname}/resources/replace_card`);
-//====================================================================================//
-// overview
+//========================================= OVERVIEW =============================================================//
+
 const overview_html = fs.readFileSync(`${__dirname}/index.html`, "utf-8");
 const overview_css = fs.readFileSync(`${__dirname}/style.css`, "utf-8");
 
-// ===================================================================================//
-// images
+// ===================================== ABOUT ===================================================================//
 
-// ===================================================================================//
-// about
 const about_html = fs.readFileSync(`${__dirname}/about/about.html`, "utf-8");
 const about_css = fs.readFileSync(`${__dirname}/about/about.css`, "utf-8");
 const about_js = fs.readFileSync(`${__dirname}/about/about.js`, "utf-8");
 
-// resources
+// ===================================== RESOURCES ===============================================================//
+
 let resources_html = fs.readFileSync(
   `${__dirname}/resources/templates/resources_overview.html`,
   "utf-8"
@@ -42,7 +40,17 @@ let resources_in_sub_domains_card = fs.readFileSync(
 );
 
 const resources_links_card = fs.readFileSync(
-  `${__dirname}/resources/templates/resources_card.html`,
+  `${__dirname}/resources/templates/resources_links_card.html`,
+  "utf-8"
+);
+
+const resources_topics_card = fs.readFileSync(
+  `${__dirname}/resources/templates/resources_topics_card.html`,
+  "utf-8"
+);
+
+let resources_topics_in_sub_domains_card = fs.readFileSync(
+  `${__dirname}/resources/templates/resources_topics_in_sub_domains_card.html`,
   "utf-8"
 );
 
@@ -57,7 +65,7 @@ const resources_json = fs.readFileSync(
 );
 const resourcesObj = JSON.parse(resources_json);
 
-// placements
+// =========================================== PLACEMENTS ======================================================= //
 const placements_html = fs.readFileSync(
   `${__dirname}/placements/placements.html`,
   "utf-8"
@@ -70,7 +78,7 @@ const placements_js = fs.readFileSync(
   `${__dirname}/placements/placements.js`,
   "utf-8"
 );
-// higher studies
+// ========================================= HIGHER STUDIES ===================================================== //
 const higher_studies_html = fs.readFileSync(
   `${__dirname}/higher_studies/higher_studies.html`,
   "utf-8"
@@ -83,7 +91,7 @@ const higher_studies_js = fs.readFileSync(
   `${__dirname}/higher_studies/higher_studies.js`,
   "utf-8"
 );
-// faculty
+// ============================================== FACULTY ======================================================= //
 const faculty_html = fs.readFileSync(
   `${__dirname}/faculty/faculty.html`,
   "utf-8"
@@ -93,17 +101,21 @@ const faculty_css = fs.readFileSync(
   "utf-8"
 );
 const faculty_js = fs.readFileSync(`${__dirname}/faculty/faculty.js`, "utf-8");
-// events
+
+// ============================================= EVENTS ========================================================= //
+
 const events_html = fs.readFileSync(`${__dirname}/events/events.html`, "utf-8");
 const events_css = fs.readFileSync(`${__dirname}/events/events.css`, "utf-8");
 const events_js = fs.readFileSync(`${__dirname}//events/events.js`, "utf-8");
-//=============================================================================================//
+
+// ============================================ CREATE SERVER =================================================== //
+
 const server = http.createServer((req, res) => {
   const { query, pathname } = url.parse(req.url, true);
 
-  if (pathname === "/" || pathname === "/index.html") {
-    // file://C:/Users/HP/OneDrive/Desktop/gitam/sem7/project_phase_1/garkh/images/chatbot.png
+  // ========================================== HOME PAGE ======================================================= //
 
+  if (pathname === "/" || pathname === "/index.html") {
     res.writeHead(200, { "Content-type": "text/html" });
     res.end(overview_html);
   } else if (pathname === "/style.css") {
@@ -111,9 +123,7 @@ const server = http.createServer((req, res) => {
     res.end(overview_css);
   }
 
-  //============================================================================================//
-
-  // for about page
+  //============================================ ABOUT PAGE ======================================================//
   else if (pathname === "/about/about.html") {
     res.writeHead(200, { "Content-type": "text/html" });
     res.end(about_html);
@@ -125,53 +135,54 @@ const server = http.createServer((req, res) => {
     res.end(about_js);
   }
 
-  //===================================================================================//
-
-  // resources page
+  //======================================== RESOURCES PAGE=======================================================//
   else if (pathname === "/resources") {
-    // console.log(query);
+    // ======================================READING  JSON FILE ================================================= //
 
-    // getting data from the json file
     const data = fs.readFileSync(
       `${__dirname}/resources/resource_links.json`,
       "utf-8"
     );
     const dataObj = JSON.parse(data);
-    // console.log(dataObj);
-
-    // replacing the content in the domain card with domain names from the json file
 
     const cardsHTML = dataObj
       .map((el) => replace_card(resources_card, el))
       .join("");
 
-    // console.log(cardsHTML);
     resources_html = resources_html.replace(/{%RESOURCES_CARDS%}/g, cardsHTML);
 
-    // sending the resources_html back to the page
     res.writeHead(200, { "Content-type": "text/html" });
 
-    // res.end(resources_html);
+    // ========================================== DOMAINS ========================================================//
+
     if (Object.keys(query).length === 0) {
       console.log("I am at length 0");
       res.end(resources_html);
     }
 
-    //=========================================================//
+    // ======================================== SUB DOMAINS ======================================================//
     else if (Object.keys(query).length === 1) {
-      // domain obj
+      // ================================== SUB DOMAINS OBJECT ARRAY  (not working)=============================================//
+      // // console.log(query.domain_id);
+      // const subdomainObj = resourcesObj.find(
+      //   (obj) => obj.domain_id.toLowerCase() === query.domain_id.toLowerCase()
+      // );
+      // console.log(subdomainObj);
 
       const subdomainObjectsArray =
         resourcesObj[query.domain_id]["sub_domains"];
-      // console.log(subdomainObjectsArray);
+
+      // ============================ ADDING THE DATA TO THE CARD CREATED ======================================= //
 
       const subdomainCardsHTML = subdomainObjectsArray
         .map((sd) => {
-          // const output = replace(resources_subdomains_card, sd);
           let output = resources_subdomains_card.replace(
             /{%SUB_DOMAIN_NAME%}/g,
             sd.sub_domain_name
           );
+
+          // ======================== REPLACING THE DOMAIN ID AND THE SUB DOMAIN ID ============================= //
+
           output = output.replace(/{%SUB_DOMAIN_ID%}/g, sd.sub_domain_id);
           output = output.replace(
             /{%DOMAIN_ID%}/g,
@@ -181,10 +192,15 @@ const server = http.createServer((req, res) => {
         })
         .join("");
 
+      // ================== REPLACING THE SUB_DOMAINS_CARDS WITH THE CREATED CARD (DATA ADDED) ================== //
+
       resources_incard = resources_incard.replace(
         /{%SUB_DOMAIN_CARDS%}/g,
         subdomainCardsHTML
       );
+
+      // ================================== REPLACING THE DOMAIN_NAME =========================================== //
+
       resources_incard = resources_incard.replace(
         /{%DOMAIN_NAME%}/g,
         resourcesObj[query.domain_id]["domain_name"]
@@ -193,131 +209,270 @@ const server = http.createServer((req, res) => {
       console.log("I am at length 1");
       res.end(resources_incard);
     }
-
-    ////////////////////////////////////////////////////////////////
+    // ============================================ TOPICS AND LINKS =========================================== //
     else if (Object.keys(query).length === 2) {
+      // sub domain objects array
       const subdomainObjectsArray =
         resourcesObj[query.domain_id]["sub_domains"];
-
       const subdomainObj = subdomainObjectsArray.find(
         (obj) =>
           obj.sub_domain_id.toLowerCase() === query.sub_domain_id.toLowerCase()
       );
+
+      // ======================================= TOPICS ========================================================= //
       if (subdomainObj.hasOwnProperty("topics")) {
         console.log("topics");
+
+        // ================================ TOPICS FROM SUB DOMAINS ============================================= //
+        const topicsArray = subdomainObj.topics;
+        console.log(topicsArray);
+        const topicCardsHTML = topicsArray
+          .map((topic) => {
+            // replacing the topic name
+            let output = resources_topics_card.replace(
+              /{%TOPIC_NAME%}/g,
+              topic.topic_name
+            );
+
+            // replacing the domain id in the link
+            output = output.replace(
+              /{%DOMAIN_ID%}/g,
+              resourcesObj[query.domain_id]["domain_id"]
+            );
+            // replacing the sub domain id in the link
+            output = output.replace(
+              /{%SUB_DOMAIN_ID%}/g,
+              subdomainObj.sub_domain_id
+            );
+            // replacing the topic id in the link
+            output = output.replace(/{%TOPIC_ID%}/g, topic.topic_id);
+
+            console.log(output);
+            return output;
+          })
+          .join("");
+
+        // =================== REPLACING THE PLACEHOLDER WITH ACTUAL TOPIC CARDS ================================ //
+        resources_topics_in_sub_domains_card =
+          resources_topics_in_sub_domains_card.replace(
+            /{%TOPICS_CARD%}/g,
+            topicCardsHTML
+          );
+
+        // =================== REPLACING THE SUB DOMAIN NAME ====================================================//
+        resources_topics_in_sub_domains_card =
+          resources_topics_in_sub_domains_card.replace(
+            /{%SUB_DOMAIN_NAME%}/g,
+            subdomainObj.sub_domain_name
+          );
+
+        // ================================== SENDING THE DATA BACK ========================================== //
+        res.writeHead(200, { "Content-type": "text/html" });
+        console.log("I am at length 2");
+        res.end(resources_topics_in_sub_domains_card);
       }
 
-      ///////////////////////////////////////////////////////////////////////
+      // ========================================== LINKS ======================================================= //
       else {
+        console.log("links");
+        // ================================= LINKS ARRAY FROM SUB DOMAINS ======================================= //
         const linksArray = subdomainObj.links;
-        console.log(linksArray);
-        // const linkCardsHTML = linksArray
-        //   .map((link) => {
-        //     let output = resources_links_card.replace(
-        //       /{%LINK_NAME%}/g,
-        //       link.link_name
-        //     );
-        //     output = output.replace(
-        //       /{%SUB_DOMAIN_ID%}/g,
-        //       subdomainObj.sub_domain_id
-        //     );
-        //     output = output.replace(
-        //       /{%DOMAIN_ID%}/g,
-        //       resourcesObj[query.domain_id]["domain_id"]
-        //     );
-        //     return output;
-        //   })
-        //   .join("");
-        // resources_in_sub_domains_card = resources_in_sub_domains_card.replace(
-        //   /{%LINKS_CARD%}/g,
-        //   linkCardsHTML
-        // );
-        // resources_in_sub_domains_card = resources_in_sub_domains_card.replace(
-        //   /{%SUB_DOMAIN_NAME%}/g,
-        //   subdomainObj.sub_domain_name
-        // );
-        // // console.log(subdomainObj);
-        // res.writeHead(200, { "Content-type": "text/html" });
+        // console.log(linksArray);
+        // console.log(resources_links_card);
+
+        // ============================== REPLACING THE DATA IN LINK CARD ================================= //
+
+        const linkCardsHTML = linksArray
+          .map((link) => {
+            // replacing the link name
+            let output = resources_links_card.replace(
+              /{%LINK_NAME%}/g,
+              link.link_name
+            );
+
+            // replacing the link placeholder
+            output = output.replace(/{%LINK%}/g, link.link);
+
+            // replacing the sub domain id
+            output = output.replace(
+              /{%SUB_DOMAIN_ID%}/g,
+              subdomainObj.sub_domain_id
+            );
+
+            // replacing the domain id
+            output = output.replace(
+              /{%DOMAIN_ID%}/g,
+              resourcesObj[query.domain_id]["domain_id"]
+            );
+            // console.log(output);
+            return output;
+          })
+          .join("");
+
+        // ========================== REPLACING THE PLACEHOLDER WITH ACTUAL LINKS CARD ========================== //
+
+        resources_in_sub_domains_card = resources_in_sub_domains_card.replace(
+          /{%LINK_CARDS%}/g,
+          linkCardsHTML
+        );
+
+        // ========================== REPLACING THE PLACEHOLDER WITH SUB DOMAIN NAME ============================ //
+
+        resources_in_sub_domains_card = resources_in_sub_domains_card.replace(
+          /{%SUB_DOMAIN_NAME%}/g,
+          subdomainObj.sub_domain_name
+        );
+        // console.log(subdomainObj);
+        res.writeHead(200, { "Content-type": "text/html" });
         console.log("I am at length 2");
         res.end(resources_in_sub_domains_card);
       }
     }
 
-    // resources.css file
-    else if (pathname === "/resources.css") {
-      res.writeHead(200, { "Content-type": "text/css" });
-      res.end(resources_css);
-    }
+    // ====================================== LINKS INSIDE THE TOPICS =========================================== //
+    else if (Object.keys(query).length === 3) {
+      console.log("I am at length 3");
+      const subdomainObjectsArray =
+        resourcesObj[query.domain_id]["sub_domains"];
+      const subdomainObj = subdomainObjectsArray.find(
+        (obj) =>
+          obj.sub_domain_id.toLowerCase() === query.sub_domain_id.toLowerCase()
+      );
 
-    //=========================================================================================//
+      // ====================== TOPICS ARRAY ======================= //
+      console.log("topics");
+      const topicsArray = subdomainObj.topics;
+      // console.log(topicsArray);
 
-    // for placements page
-    else if (pathname === "/placements/placements.html") {
-      console.log("requested for the placements page");
+      // getting particular topic based upon the topic_id
+      const topicsObj = topicsArray.find(
+        (obj) => obj.topic_id.toLowerCase() === query.topic_id.toLowerCase()
+      );
+      // console.log(topicsObj);
+      // getting the links array from the topicsObj
+      const topicsLinksArray = topicsObj["links"];
+      console.log(topicsLinksArray);
+
+      // ================================ REPLACING THE DATA IN THE LINKS(FROM TOPICS) CARD =============================== //
+      const topicLinksCardsHTML = topicsLinksArray
+        .map((link) => {
+          let output = resources_links_card.replace(
+            /{%LINK_NAME%}/g,
+            link.link_name
+          );
+
+          // replacing the link placeholder
+          output = output.replace(/{%LINK%}/g, link.link);
+
+          // replacing the sub domain id
+          output = output.replace(
+            /{SUB_DOMAIN_ID}/g,
+            subdomainObj.sub_domain_id
+          );
+
+          // replacing the domain id
+          output = output.replace(
+            /{%DOMAIN_ID%}/g,
+            resourcesObj[query.domain_id]["domain_id"]
+          );
+
+          // console.log(output);
+          return output;
+        })
+        .join("");
+
+      // ============================== REPLACING THE PLACEHOLDER WITH ACTUAL LINKS CARD =====================================//
+
+      resources_in_sub_domains_card = resources_in_sub_domains_card.replace(
+        /{%LINK_CARDS%}/g,
+        topicLinksCardsHTML
+      );
+
+      // =================================== REPLACING THE PLACEHOLDER WITH THE SUB DOMAIN NAME ==================================== //
+      resources_in_sub_domains_card = resources_in_sub_domains_card.replace(
+        /{%SUB_DOMAIN_NAME%}/g,
+        subdomainObj.sub_domain_name
+      );
+
       res.writeHead(200, { "Content-type": "text/html" });
-      res.end(placements_html);
-    } else if (pathname === "/placements/placements.css") {
-      res.writeHead(200, { "Content-type": "text/css" });
-      res.end(placements_css);
-    } else if (pathname === "/placements/placements.js") {
-      res.writeHead(200, { "Content-type": "application/javascript" });
-      res.end(placements_js);
+      res.end(resources_in_sub_domains_card);
     }
+  }
 
-    //=========================================================================================//
+  // =============================== SENDING THE RESOURCES.CSS FILE ============================================= //
+  else if (pathname === "/resources.css") {
+    res.writeHead(200, { "Content-type": "text/css" });
+    res.end(resources_css);
+  }
 
-    // for higher_studies page
-    else if (pathname === "/higher_studies/higher_studies.html") {
-      console.log("requested for the higher studies page");
-      res.writeHead(200, { "Content-type": "text/html" });
-      res.end(higher_studies_html);
-    } else if (pathname === "/higher_studies/higher_studies.css") {
-      res.writeHead(200, { "Content-type": "text/css" });
-      res.end(higher_studies_css);
-    } else if (pathname === "/higher_studies/higher_studies.js") {
-      res.writeHead(200, { "Content-type": "application/javascript" });
-      res.end(higher_studies_js);
-    }
+  //=========================================================================================//
 
-    //==============================================================================================//
+  // for placements page
+  else if (pathname === "/placements/placements.html") {
+    console.log("requested for the placements page");
+    res.writeHead(200, { "Content-type": "text/html" });
+    res.end(placements_html);
+  } else if (pathname === "/placements/placements.css") {
+    res.writeHead(200, { "Content-type": "text/css" });
+    res.end(placements_css);
+  } else if (pathname === "/placements/placements.js") {
+    res.writeHead(200, { "Content-type": "application/javascript" });
+    res.end(placements_js);
+  }
 
-    // for faculty page
-    else if (pathname === "/faculty/faculty.html") {
-      console.log("requested for the faculty page");
-      res.writeHead(200, { "Content-type": "text/html" });
-      res.end(faculty_html);
-    } else if (pathname === "/faculty/faculty.css") {
-      res.writeHead(200, { "Content-type": "text/css" });
-      res.end(faculty_css);
-    } else if (pathname === "/faculty/faculty.js") {
-      res.writeHead(200, { "Content-type": "application/javascript" });
-      res.end(faculty_js);
-    }
+  //=========================================================================================//
 
-    //===========================================================================================//
-    // for events page
-    else if (pathname === "/events/events.html") {
-      console.log("requested for the events page");
-      res.writeHead(200, { "Content-type": "text/html" });
-      res.end(events_html);
-    } else if (pathname === "/events/events.css") {
-      res.writeHead(200, { "Content-type": "text/css" });
-      res.end(events_css);
-    } else if (pathname === "/events/events.js") {
-      res.writeHead(200, { "Content-type": "application/javascript" });
-      res.end(events_js);
-    }
+  // for higher_studies page
+  else if (pathname === "/higher_studies/higher_studies.html") {
+    console.log("requested for the higher studies page");
+    res.writeHead(200, { "Content-type": "text/html" });
+    res.end(higher_studies_html);
+  } else if (pathname === "/higher_studies/higher_studies.css") {
+    res.writeHead(200, { "Content-type": "text/css" });
+    res.end(higher_studies_css);
+  } else if (pathname === "/higher_studies/higher_studies.js") {
+    res.writeHead(200, { "Content-type": "application/javascript" });
+    res.end(higher_studies_js);
+  }
 
-    //==========================================================================================//
-    // not found
-    else {
-      res.writeHead(404, {
-        "Content-type": "text/html",
-        "my-own-header": "hello world",
-      });
-      console.log(pathname);
-      res.end("<h1>page not found</h1>");
-    }
+  //==============================================================================================//
+
+  // for faculty page
+  else if (pathname === "/faculty/faculty.html") {
+    console.log("requested for the faculty page");
+    res.writeHead(200, { "Content-type": "text/html" });
+    res.end(faculty_html);
+  } else if (pathname === "/faculty/faculty.css") {
+    res.writeHead(200, { "Content-type": "text/css" });
+    res.end(faculty_css);
+  } else if (pathname === "/faculty/faculty.js") {
+    res.writeHead(200, { "Content-type": "application/javascript" });
+    res.end(faculty_js);
+  }
+
+  //===========================================================================================//
+  // for events page
+  else if (pathname === "/events/events.html") {
+    console.log("requested for the events page");
+    res.writeHead(200, { "Content-type": "text/html" });
+    res.end(events_html);
+  } else if (pathname === "/events/events.css") {
+    res.writeHead(200, { "Content-type": "text/css" });
+    res.end(events_css);
+  } else if (pathname === "/events/events.js") {
+    res.writeHead(200, { "Content-type": "application/javascript" });
+    res.end(events_js);
+  }
+
+  //==========================================================================================//
+  // not found
+  else {
+    res.writeHead(404, {
+      "Content-type": "text/html",
+      "my-own-header": "hello world",
+    });
+    console.log(pathname);
+    res.end("<h1>page not found</h1>");
   }
 });
 
