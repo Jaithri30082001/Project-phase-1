@@ -166,7 +166,7 @@ html {
   gap: 20px;
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.5s, transform 0.5s;
+  transition: opacity 1s, transform 1s;
 }
 
 .about-image-custom {
@@ -177,8 +177,9 @@ html {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  animation: slideIn 3s ease forwards;
+  animation: slideIn 5s ease forwards;
   opacity: 0;
+  transform: translateY(40px);
   text-align: center;
 }
 
@@ -216,7 +217,7 @@ html {
 .visible {
   opacity: 1;
   transform: translateY(0);
-  transition: opacity 0.5s, transform 0.9s;
+  transition: opacity 0.3s, transform 0.3s;
 }
 .about-custom.in-view {
   opacity: 1;
@@ -235,7 +236,7 @@ html {
   font-size: 18px;
   border-radius: 5px;
   font-family: poppins;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow effect */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .about-button2-custom:hover {

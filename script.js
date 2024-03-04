@@ -8,6 +8,7 @@ const replace_card = require(`${__dirname}/resources/replace_card`);
 const overview_html = fs.readFileSync(`${__dirname}/index.html`, "utf-8");
 const overview_css = fs.readFileSync(`${__dirname}/style.css`, "utf-8");
 const overview_js = fs.readFileSync(`${__dirname}/script.js`, "utf-8");
+const scroll_animation_js = fs.readFileSync(`${__dirname}/scroll.js`, "utf-8");
 
 // ============================================== CREATE SERVER ======================================================= //
 const server = http.createServer((req, res) => {
@@ -160,6 +161,9 @@ const server = http.createServer((req, res) => {
   } else if (pathname === "/script.js") {
     res.writeHead(200, { "Content-type": "application/javascript" });
     res.end(overview_js);
+  } else if (pathname === "/scroll.js") {
+    res.writeHead(200, { "Content-type": "application/javascript" });
+    res.end(scroll_animation_js);
   }
 
   // ================================== SENDING IMAGES (HOME PAGE)============================ //
