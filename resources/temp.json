@@ -36,31 +36,31 @@
         ]
       },
       {
-        "sub_domain_id": "C++",
-        "sub_domain_name": "C++",
+        "sub_domain_id": "CPP",
+        "sub_domain_name": "CPP",
         "links": [
           {
-            "link_id": "c++l1",
+            "link_id": "cppl1",
             "link_name": "Learn CPP",
             "link": "https://learncpp.com/"
           },
           {
-            "link_id": "c++l2",
+            "link_id": "cppl2",
             "link_name": "C++ Reference",
             "link": "https://en.cppreference.com/"
           },
           {
-            "link_id": "c++l3",
+            "link_id": "cppl3",
             "link_name": "C++ Tutorials Point",
             "link": "https://www.tutorialspoint.com/cplusplus/index.htm"
           },
           {
-            "link_id": "c++l4",
+            "link_id": "cppl4",
             "link_name": "W3 Schools C++",
             "link": "https://www.w3schools.com/cpp/default.asp"
           },
           {
-            "link_id": "c++l5",
+            "link_id": "cppl5",
             "link_name": "C++ Roadmap",
             "link": "https://roadmap.sh/cpp"
           }
@@ -160,8 +160,8 @@
         ]
       },
       {
-        "sub_domain_id": "c#",
-        "sub_domain_name": "C#",
+        "sub_domain_id": "csh",
+        "sub_domain_name": "CSH",
         "links": [
           {
             "link_id": "cs-l1",

@@ -137,7 +137,7 @@ console.log(`${__dirname}/images/search.png`);
 // ============================= IMAGES ABOUT PAGE ========================================//
 
 // const dropdown_image = fs.readFileSync(`${__dirname}/about/dropdown_menu.png`);
-console.log(`${__dirname}/images/about/dropdown_menu.png`);
+// console.log(`${__dirname}/images/about/dropdown_menu.png`);
 // const faqs_image = fs.readFileSync(`${__dirname}/images/about/faqs.png`);
 // const introduction_image = fs.readFileSync(
 //   `${__dirname}/images/about/introduction_image.jpg`
