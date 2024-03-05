@@ -275,10 +275,10 @@ const server = http.createServer((req, res) => {
           return output;
         })
         .join("");
-      console.log(
-        "/////////////////////////////// THE CARD //////////////////////////////////////////////////////"
-      );
-      console.log(subdomainCardsHTML);
+      // console.log(
+      //   "/////////////////////////////// THE CARD //////////////////////////////////////////////////////"
+      // );
+      // console.log(subdomainCardsHTML);
 
       // ================== REPLACING THE SUB_DOMAINS_CARDS WITH THE CREATED CARD (DATA ADDED) ================== //
 
@@ -286,10 +286,10 @@ const server = http.createServer((req, res) => {
         /{%SUB_DOMAIN_CARDS%}/g,
         subdomainCardsHTML
       );
-      console.log(
-        "////////////////////////////////// RESOURCES IN CARD FILE /////////////////////////////////////////////////"
-      );
-      console.log(resources_incard);
+      // console.log(
+      //   "////////////////////////////////// RESOURCES IN CARD FILE /////////////////////////////////////////////////"
+      // );
+      // console.log(resources_incard);
 
       // ================================== REPLACING THE DOMAIN_NAME =========================================== //
 
@@ -339,7 +339,7 @@ const server = http.createServer((req, res) => {
             // replacing the topic id in the link
             output = output.replace(/{%TOPIC_ID%}/g, topic.topic_id);
 
-            console.log(output);
+            // console.log(output);
             return output;
           })
           .join("");
@@ -369,9 +369,6 @@ const server = http.createServer((req, res) => {
         console.log("links");
         // ================================= LINKS ARRAY FROM SUB DOMAINS ======================================= //
         const linksArray = subdomainObj.links;
-        // console.log(linksArray);
-        // console.log(resources_links_card);
-
         // ============================== REPLACING THE DATA IN LINK CARD ================================= //
 
         const linkCardsHTML = linksArray
@@ -414,7 +411,6 @@ const server = http.createServer((req, res) => {
           /{%SUB_DOMAIN_NAME%}/g,
           subdomainObj.sub_domain_name
         );
-        // console.log(subdomainObj);
         res.writeHead(200, { "Content-type": "text/html" });
         console.log("I am at length 2");
         res.end(resources_in_sub_domains_card);
@@ -432,7 +428,7 @@ const server = http.createServer((req, res) => {
       );
 
       // ====================== TOPICS ARRAY ======================= //
-      console.log("topics");
+      // console.log("topics");
       const topicsArray = subdomainObj.topics;
       // console.log(topicsArray);
 
@@ -440,10 +436,8 @@ const server = http.createServer((req, res) => {
       const topicsObj = topicsArray.find(
         (obj) => obj.topic_id.toLowerCase() === query.topic_id.toLowerCase()
       );
-      // console.log(topicsObj);
       // getting the links array from the topicsObj
       const topicsLinksArray = topicsObj["links"];
-      console.log(topicsLinksArray);
 
       // ================================ REPLACING THE DATA IN THE LINKS(FROM TOPICS) CARD =============================== //
       const topicLinksCardsHTML = topicsLinksArray
@@ -473,7 +467,7 @@ const server = http.createServer((req, res) => {
         })
         .join("");
 
-      // ============================== REPLACING THE PLACEHOLDER WITH ACTUAL LINKS CARD =====================================//
+      // ============================== REPLACING THE PLACEHOLDER WITH ACTUAL LINKS CARD =================================//
 
       resources_in_sub_domains_card = resources_in_sub_domains_card.replace(
         /{%LINK_CARDS%}/g,
@@ -497,9 +491,7 @@ const server = http.createServer((req, res) => {
     res.end(resources_css);
   }
 
-  //=========================================================================================//
-
-  // for placements page
+  //================================================== PLACEMENTS PAGE ======================================================//
   else if (pathname === "/placements/placements.html") {
     console.log("requested for the placements page");
     res.writeHead(200, { "Content-type": "text/html" });
@@ -512,9 +504,7 @@ const server = http.createServer((req, res) => {
     res.end(placements_js);
   }
 
-  //=========================================================================================//
-
-  // for higher_studies page
+  //=================================================== HIGHER STUDIES ========================================================//
   else if (pathname === "/higher_studies/higher_studies.html") {
     console.log("requested for the higher studies page");
     res.writeHead(200, { "Content-type": "text/html" });
@@ -527,9 +517,7 @@ const server = http.createServer((req, res) => {
     res.end(higher_studies_js);
   }
 
-  //==============================================================================================//
-
-  // for faculty page
+  //======================================================= FACULTY PAGE ===========================================================//
   else if (pathname === "/faculty/faculty.html") {
     console.log("requested for the faculty page");
     res.writeHead(200, { "Content-type": "text/html" });
@@ -543,18 +531,18 @@ const server = http.createServer((req, res) => {
   }
 
   //===========================================================================================//
-  // for events page
-  else if (pathname === "/events/events.html") {
-    console.log("requested for the events page");
-    res.writeHead(200, { "Content-type": "text/html" });
-    res.end(events_html);
-  } else if (pathname === "/events/events.css") {
-    res.writeHead(200, { "Content-type": "text/css" });
-    res.end(events_css);
-  } else if (pathname === "/events/events.js") {
-    res.writeHead(200, { "Content-type": "application/javascript" });
-    res.end(events_js);
-  }
+  // // for events page
+  // else if (pathname === "/events/events.html") {
+  //   console.log("requested for the events page");
+  //   res.writeHead(200, { "Content-type": "text/html" });
+  //   res.end(events_html);
+  // } else if (pathname === "/events/events.css") {
+  //   res.writeHead(200, { "Content-type": "text/css" });
+  //   res.end(events_css);
+  // } else if (pathname === "/events/events.js") {
+  //   res.writeHead(200, { "Content-type": "application/javascript" });
+  //   res.end(events_js);
+  // }
 
   //==========================================================================================//
   // not found
