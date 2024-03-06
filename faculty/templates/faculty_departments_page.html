@@ -3,11 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{%DOMAIN_NAME%}</title>
-    <!-- js files -->
-    <!-- <script defer src="resources.js"></script> -->
+    <title>G-ARKH Faculty</title>
+
+    <!-- js file -->
+    <script defer src="faculty.js"></script>
+
     <!-- css files -->
-    <link rel="stylesheet" href="resources.css" />
+    <link rel="stylesheet" href="faculty.css" />
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Bayon&display=swap");
     </style>
@@ -28,9 +30,11 @@
       referrerpolicy="no-referrer"
     />
   </head>
+
+  <!-- body -->
   <body>
     <!-- header -->
-    <img src="/images/chatbot.png" alt="Chatbot Icon" id="chatbot-icon" />
+    <img src="../images/chatbot.png" alt="Chatbot Icon" id="chatbot-icon" />
     <div class="header-custom">
       <div class="logo-custom"><a href="../index.html">G-ARKH</a></div>
 
@@ -41,38 +45,22 @@
         <a href="../placements/placements.html">Placements</a>
         <a href="../higher_studies/higher_studies.html">Higher Studies</a>
         <a href="../faculty">Faculty</a>
-        <!-- <a href="../events/events.html">Events</a> -->
-        <!-- <button id="search-custom">
-          <img src="/images/Group 2.png" />
+        <!-- <a href="../events/events.html">Events</a>
+        <button id="search-custom">
+          <img src="../images/Group 2.png" />
         </button> -->
       </div>
     </div>
 
-    <!-- resources topics cards cards -->
-    <div class="topics_container-custom">
-      <h1>{%SUB_DOMAIN_NAME%}</h1>
-      <div class="topics_cards-container-custom">{%TOPICS_CARD%}</div>
+    <!-- schools_cards -->
+    <div class="head_of_the_school_container-custom">
+      <h1 id="head_of_the_school">{%HEAD_OF_THE_SCHOOL_STRING%}</h1>
+      <div class="head_of_the_school-custom">{%HEAD_OF_THE_SCHOOL%}</div>
     </div>
-    <!-- footer section -->
 
-    <footer class="footer-custom">
-      <div class="footer-logo">
-        <a href="#">G-ARKH</a>
-      </div>
-      <div class="footer-links">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#resources">Resources</a>
-        <a href="#placements">Placements</a>
-        <a href="#faculty">Faculty</a>
-        <a href="#higher_studies">Higher Studies</a>
-        <a href="#events">Events</a>
-      </div>
-      <div class="footer-contact">
-        <p>Contact Us:</p>
-        <p>Email: info@g-arkh.com</p>
-        <p>Phone: +1 (123) 456-7890</p>
-      </div>
-    </footer>
+    <div class="departments_container-custom">
+      <h1 id="departments-custom">{%DEPARTMENTS%}</h1>
+      <div class="departments-custom">{%DEPARTMENT_CARDS%}</div>
+    </div>
   </body>
 </html>

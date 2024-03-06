@@ -1,5 +1,7 @@
 {
   "GITAM School of Technology": {
+    "school_id": "gst",
+    "school_name": "GITAM School of Technology",
     "head_of_the_school": {
       "name": "Nagendra Prasad Kota",
       "email_id": "nkota@gitam.edu",
@@ -1760,6 +1762,8 @@
     ]
   },
   "GITAM School of Science": {
+    "school_id": "gss",
+    "school_name": "GITAM School of Science",
     "head_of_the_school": {
       "name": "Vedavathi K.",
       "email_id": "vkatneni@gitam.edu",
@@ -2587,6 +2591,8 @@
     ]
   },
   "GITAM School of Law": {
+    "school_id": "gsl",
+    "school_name": "GITAM School of Law",
     "departments": [
       {
         "department_name": "Law",
@@ -2691,6 +2697,8 @@
     ]
   },
   "GITAM School of Physiotherapy": {
+    "school_id": "gsp",
+    "school_name": "GITAM School of  Physiotherapy",
     "departments": [
       {
         "department_name": "Physiotherapy",
@@ -2742,6 +2750,8 @@
     ]
   },
   "GITAM School of Nursing": {
+    "school_id": "gsn",
+    "school_name": "GITAM School of Nursing",
     "departments": [
       {
         "department_name": "Nursing",
@@ -2802,6 +2812,8 @@
     ]
   },
   "GITAM School of Architecture": {
+    "school_id": "gsa",
+    "school_name": "GITAM School of Architecture",
     "departments": [
       {
         "department_name": "Architecture",

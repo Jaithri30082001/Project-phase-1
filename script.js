@@ -97,10 +97,44 @@ const server = http.createServer((req, res) => {
     "utf-8"
   );
   // ============================================== FACULTY ======================================================= //
-  const faculty_html = fs.readFileSync(
-    `${__dirname}/faculty/faculty.html`,
+  let faculty_schools_page = fs.readFileSync(
+    `${__dirname}/faculty/templates/faculty_schools_page.html`,
     "utf-8"
   );
+
+  const faculty_schools_card = fs.readFileSync(
+    `${__dirname}/faculty/templates/faculty_schools_card.html`,
+    "utf-8"
+  );
+
+  let faculty_departments_page = fs.readFileSync(
+    `${__dirname}/faculty/templates/faculty_departments_page.html`,
+    "utf-8"
+  );
+
+  const faculty_details_card = fs.readFileSync(
+    `${__dirname}/faculty/templates/faculty_details_card.html`,
+    "utf-8"
+  );
+
+  const department_cards = fs.readFileSync(
+    `${__dirname}/faculty/templates/department_cards.html`,
+    "utf-8"
+  );
+
+  let faculty_details_page = fs.readFileSync(
+    `${__dirname}/faculty/templates/faculty_details_page.html`,
+    "utf-8"
+  );
+
+  const faculty_links = fs.readFileSync(
+    `${__dirname}/faculty/faculty_links.json`,
+    "utf-8"
+  );
+
+  const facultyObj = JSON.parse(faculty_links);
+  // console.log(facultyObj);
+
   const faculty_css = fs.readFileSync(
     `${__dirname}/faculty/faculty.css`,
     "utf-8"
@@ -437,6 +471,7 @@ const server = http.createServer((req, res) => {
         (obj) => obj.topic_id.toLowerCase() === query.topic_id.toLowerCase()
       );
       // getting the links array from the topicsObj
+
       const topicsLinksArray = topicsObj["links"];
 
       // ================================ REPLACING THE DATA IN THE LINKS(FROM TOPICS) CARD =============================== //
@@ -518,14 +553,129 @@ const server = http.createServer((req, res) => {
   }
 
   //======================================================= FACULTY PAGE ===========================================================//
-  else if (pathname === "/faculty/faculty.html") {
-    console.log("requested for the faculty page");
-    res.writeHead(200, { "Content-type": "text/html" });
-    res.end(faculty_html);
-  } else if (pathname === "/faculty/faculty.css") {
+  else if (pathname === "/faculty") {
+    // replacing the data in the school_card with data in json file
+    let schoolCardsHTML = "";
+    for (school in facultyObj) {
+      // console.log(facultyObj[school].school_name);
+      let output = faculty_schools_card.replace(
+        /{%SCHOOL_NAME%}/g,
+        facultyObj[school].school_name
+      );
+      // console.log(facultyObj[school].school_id);
+      output = output.replace(/{%SCHOOL_ID%}/g, facultyObj[school].school_id);
+      schoolCardsHTML += output;
+    }
+    // replacing SCHOOLS_CARDS placeholder with schoolCardsHTML
+    faculty_schools_page = faculty_schools_page.replace(
+      /{%SCHOOLS_CARDS%}/g,
+      schoolCardsHTML
+    );
+
+    if (Object.keys(query).length === 0) {
+      console.log("I am at length 0");
+      res.writeHead(200, { "Content-type": "text/html" });
+      res.end(faculty_schools_page);
+    }
+
+    // ===================== QUERY LENGTH = 1 ==================== //
+    else if (Object.keys(query).length === 1) {
+      console.log("I am at length 1");
+      let headOfTheSchoolCardHTML = "";
+      for (school in facultyObj) {
+        if (
+          query.school_id.toLowerCase() ===
+          facultyObj[school].school_id.toLowerCase()
+        ) {
+          if (facultyObj[school].hasOwnProperty("head_of_the_school")) {
+            const hosObj = facultyObj[school].head_of_the_school;
+            // console.log(hosObj);
+            // replacing the name of the head
+            let output = faculty_details_card.replace(
+              /{%NAME_OF_THE_FACULTY%}/g,
+              hosObj.name
+            );
+            // replacing the mail id
+            output = output.replace(/{%EMAIL_ID%}/g, hosObj.email_id);
+            output = output.replace(/{%LINK%}/g, hosObj.link);
+            // replacing the name of the school
+            output = output.replace(
+              /{%SCHOOL_NAME%}/g,
+              facultyObj[school].school_name
+            );
+
+            // REPLACING THE HEAD OF THE SCHOOL CARD IN THE DEPARTMENTS PAGE
+            faculty_departments_page = faculty_departments_page.replace(
+              /{%HEAD_OF_THE_SCHOOL%}/g,
+              output
+            );
+            faculty_departments_page = faculty_departments_page.replace(
+              /{%HEAD_OF_THE_SCHOOL_STRING%}/g,
+              "HEAD OF THE SCHOOL"
+            );
+            faculty_departments_page = faculty_departments_page.replace(
+              /{%DEPARTMENTS%}/g,
+              "DEPARTMENTS"
+            );
+
+            // REPLACING THE DEPARTMENTS CARDS IN THE DEPARTMENTS PAGE
+            const departmentsArray = facultyObj[school].departments;
+            // console.log(departmentsArray);
+            const departmentCardsHTML = departmentsArray
+              .map((department) => {
+                console.log(department.department_name);
+                // replacing the department name
+                let output = department_cards.replace(
+                  /{%DEPARTMENT_NAME%}/g,
+                  department.department_name
+                );
+                // replacing the department id in the link
+                output = output.replace(
+                  /{%DEPARTMENT_ID%}/g,
+                  department.department_id
+                );
+                // replacing the school_id
+                output = output.replace(
+                  /{%SCHOOL_ID%}/g,
+                  facultyObj[school].school_id
+                );
+
+                return output;
+              })
+              .join("");
+            faculty_departments_page = faculty_departments_page.replace(
+              /{%DEPARTMENT_CARDS%}/g,
+              departmentCardsHTML
+            );
+            headOfTheSchoolCardHTML += output;
+            res.writeHead(200, { "Content-type": "text/html" });
+            res.end(faculty_departments_page);
+          }
+
+          // IF THE LENGTH OF THE QUERY IS 1 AND BUT THERE IS ONLY ONE DEPARTMENT IN THAT SCHOOL SO WE DISPLAY THE HOD, PROFESSORS AND OTHER CARDS DIRECTLY
+          else {
+            console.log("no head_of_the_school property");
+            const departmentsArray = facultyObj[school].departments;
+            // console.log(departmentsArray);
+            // =============replacing the data in the hod card ============ //
+            for (department in departmentsArray) {
+              if (department.department_id === query.department_id) {
+                console.log("match found");
+                console.log(department.department_name);
+
+                // undefined?????
+              }
+            }
+          }
+        }
+      }
+      // res.writeHead(200, { "Content-type": "text/html" });
+      // res.end(faculty_departments_page);
+    }
+  } else if (pathname === "/faculty.css") {
     res.writeHead(200, { "Content-type": "text/css" });
     res.end(faculty_css);
-  } else if (pathname === "/faculty/faculty.js") {
+  } else if (pathname === "/faculty.js") {
     res.writeHead(200, { "Content-type": "application/javascript" });
     res.end(faculty_js);
   }

@@ -44,7 +44,7 @@
         <a href="../resources">Resources</a>
         <a href="../placements/placements.html">Placements</a>
         <a href="../higher_studies/higher_studies.html">Higher Studies</a>
-        <a href="../faculty/faculty.html">Faculty</a>
+        <a href="../faculty">Faculty</a>
         <!-- <a href="../events/events.html">Events</a>
         <button id="search-custom">
           <img src="../images/Group 2.png" />
@@ -52,7 +52,30 @@
       </div>
     </div>
 
-    <!-- content -->
-    <h1>faculty</h1>
+    <!-- faculty details -->
+
+    <!-- hod card -->
+    <div class="hod_container-custom">
+      <h1 id="hod">HEAD OF THE DEPARTMENT</h1>
+      <div class="hod-custom">{%HOD_CARD%}</div>
+    </div>
+
+    <!-- professors cards -->
+    <div class="professors_container-custom">
+      <h1 id="profressor">{%PROFESSOR_STRING%}</h1>
+      <div class="professor-custom">{%PROFESSOR_CARDS%}</div>
+    </div>
+
+    <!-- associate professors cards -->
+    <div class="associate_professors_container-custom">
+      <h1 id="associate">ASSOCIATE PROFESSORS</h1>
+      <div class="associate-custom">{%ASSOCIATE_CARDS%}</div>
+    </div>
+
+    <!-- assistant professors cards -->
+    <div class="assistant_professors_container-custom">
+      <h1 id="assistant">ASSISTANT PROFESSORS</h1>
+      <div class="assistant-custom">{%ASSISTANT_CARDS%}</div>
+    </div>
   </body>
 </html>
