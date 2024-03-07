@@ -1,7 +1,7 @@
 {
   "GITAM School of Technology": {
     "school_id": "gst",
-    "school_name": "GITAM School of Technology",
+    "school_name": "GITAM SCHOOL OF TECHNOLOGY",
     "head_of_the_school": {
       "name": "Nagendra Prasad Kota",
       "email_id": "nkota@gitam.edu",
@@ -9,7 +9,7 @@
     },
     "departments": [
       {
-        "department_name": "Biotechnology",
+        "department_name": "BIOTECHNOLOGY",
         "department_id": "gst-biotechnology",
         "head_of_the_department": [
           {
@@ -91,7 +91,7 @@
         ]
       },
       {
-        "department_name": "Civil Engineering",
+        "department_name": "CIVIL ENGINEERING",
         "department_id": "gst-civil-engineering",
         "head_of_the_department": [
           {
@@ -193,7 +193,7 @@
         ]
       },
       {
-        "department_name": "Mechanical Engineering",
+        "department_name": "MECHANICAL ENGINEERING",
         "department_id": "gst-mechanical-engineering",
         "head_of_the_department": [
           {
@@ -420,7 +420,7 @@
         ]
       },
       {
-        "department_name": "Electrical and Electronics and Communication Engineering",
+        "department_name": "ELECTRICAL AND ELECTRONCIS COMMUNICATION AND ENGINEERING",
         "department_id": "gst-ece",
         "head_of_the_department": [
           {
@@ -922,7 +922,7 @@
         ]
       },
       {
-        "department_name": "Computer Science and Engineering",
+        "department_name": "COMPUTER SCIENCE AND ENGINEERING",
         "department_id": "gst-cse",
         "head_of_the_department": [
           {
@@ -1763,7 +1763,7 @@
   },
   "GITAM School of Science": {
     "school_id": "gss",
-    "school_name": "GITAM School of Science",
+    "school_name": "GITAM SCHOOL OF SCIENCE",
     "head_of_the_school": {
       "name": "Vedavathi K.",
       "email_id": "vkatneni@gitam.edu",
@@ -1771,7 +1771,7 @@
     },
     "departments": [
       {
-        "department_name": "Applied Mathematics",
+        "department_name": "APPLIED MATHEMATICS",
         "department_id": "gss-applied-mathematics",
         "head_of_the_department": [
           {
@@ -1958,7 +1958,7 @@
         ]
       },
       {
-        "department_name": "Biochemistry / Bioinformatics",
+        "department_name": "BIOCHEMISTRY / BIOINFORMATICS",
         "department_id": "gss-biochemistry",
         "head_of_the_department": [
           {
@@ -2025,7 +2025,7 @@
         ]
       },
       {
-        "department_name": "Environmental Science",
+        "department_name": "ENVIRONMENTAL SCIENCE",
         "department_id": "gss-environmental-science",
         "head_of_the_department": [
           {
@@ -2107,7 +2107,7 @@
         ]
       },
       {
-        "department_name": "Computer Science",
+        "department_name": "COMPUTER SCIENCE",
         "department_id": "gss-computer-science",
         "head_of_the_department": [
           {
@@ -2225,7 +2225,7 @@
       },
 
       {
-        "department_name": "Electronics and Physics",
+        "department_name": "ELECTRONICS AND PHYSICS",
         "department_id": "gss-electronics-and-physics",
         "head_of_the_department": [
           {
@@ -2387,7 +2387,7 @@
         ]
       },
       {
-        "department_name": "Chemistry",
+        "department_name": "CHEMISTRY",
         "department_id": "gss-chemistry",
         "head_of_the_department": [
           {
@@ -2595,13 +2595,20 @@
     "school_name": "GITAM School of Law",
     "departments": [
       {
-        "department_name": "Law",
+        "department_name": "GITAM SCHOOL OF LAW",
         "department_id": "gsl-law",
         "head_of_the_department": [
           {
             "name": "Anita Rao Raviwada",
             "email_id": "araviwad@gitam.edu",
             "link": "https://www.gitam.edu/faculty-profile?info=Anita-Rao-Raviwada$$NDUxOQ=="
+          }
+        ],
+        "professors": [
+          {
+            "name": "",
+            "email_id": "",
+            "link": ""
           }
         ],
         "associate_professors": [
@@ -2701,7 +2708,7 @@
     "school_name": "GITAM School of  Physiotherapy",
     "departments": [
       {
-        "department_name": "Physiotherapy",
+        "department_name": "GITAM SCHOOL OF PHYSIOTHERAPY",
         "department_id": "gsp-physiotherapy",
         "head_of_the_department": [
           {
@@ -2754,7 +2761,7 @@
     "school_name": "GITAM School of Nursing",
     "departments": [
       {
-        "department_name": "Nursing",
+        "department_name": "GITAM SCHOOL OF NURSING",
         "department_id": "gin-nursing",
         "head_of_the_department": [
           {
@@ -2763,7 +2770,13 @@
             "link": "https://www.gitam.edu/faculty-profile?info=Venkatesan-Balu$$NTAyNDY2"
           }
         ],
-
+        "professors": [
+          {
+            "name": "",
+            "email_id": "",
+            "link": ""
+          }
+        ],
         "associate_professors": [
           {
             "name": "Lavanya Ch.",
@@ -2816,7 +2829,7 @@
     "school_name": "GITAM School of Architecture",
     "departments": [
       {
-        "department_name": "Architecture",
+        "department_name": "GITAM SCHOOL OF ARCHITECTURE",
         "department_id": "gsa-architecture",
         "head_of_the_department": [
           {
