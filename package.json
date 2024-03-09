@@ -9,7 +9,8 @@
     "start-resources": "nodemon resources/resources.js",
     "start-placements": "nodemon placements/placements.js",
     "start-higher-studies": "nodemon higher_studies/higher_studies.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm run build"
   },
   "author": "Jaithri Manogyna Kallakuri",
   "license": "ISC",
