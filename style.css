@@ -161,6 +161,8 @@ html {
 /* about section */
 
 .about-custom {
+  margin-left: 5%;
+  margin-right: 5%;
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: 20px;
@@ -278,6 +280,8 @@ html {
 /* resources section */
 .resources-custom {
   text-align: center;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 .content-custom h1 {
@@ -455,7 +459,9 @@ html {
 /* Higher Studies section */
 .higher-studies-section {
   /* background-color: #f4f4f4; */
-  padding: 50px 0;
+  /* padding: 50px 0; */
+  margin-left: 5%;
+  margin-right: 5%;
 
   text-align: center;
 }
@@ -466,8 +472,8 @@ html {
   color: #981f2b;
 }
 
-.higher-studies-heading p {
-  font-size: 25px;
+.higher-studies-heading h4 {
+  /* font-size: 25px; */
   color: #95686c;
   margin-top: 10px;
   font-family: poppins;
@@ -481,10 +487,10 @@ html {
   margin-top: 30px;
 }
 
-.higher-studies-description p {
+.higher-studies-description h5 {
   color: #95686c;
   font-family: "Poppins", sans-serif;
-  font-size: 18px;
+  /* font-size: 18px; */
 
   margin: 0;
 }
@@ -590,7 +596,7 @@ html {
 }
 
 .exam-carousel .exam-carousel-item h3 {
-  font-size: 25px;
+  /* font-size: 25px; */
   font-family: poppins;
 }
 

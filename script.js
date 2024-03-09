@@ -72,8 +72,13 @@ const server = http.createServer((req, res) => {
   const resourcesObj = JSON.parse(resources_json);
 
   // =========================================== PLACEMENTS ======================================================= //
-  const placements_html = fs.readFileSync(
-    `${__dirname}/placements/placements.html`,
+  let placements_page = fs.readFileSync(
+    `${__dirname}/placements/templates/placements_page.html`,
+    "utf-8"
+  );
+
+  const company_card = fs.readFileSync(
+    `${__dirname}/placements/templates/company_card.html`,
     "utf-8"
   );
   const placements_css = fs.readFileSync(
@@ -84,6 +89,13 @@ const server = http.createServer((req, res) => {
     `${__dirname}/placements/placements.js`,
     "utf-8"
   );
+
+  const placements_json = fs.readFileSync(
+    `${__dirname}/placements/placement_companies.json`,
+    "utf-8"
+  );
+
+  const placementsObj = JSON.parse(placements_json);
   // ========================================= HIGHER STUDIES ===================================================== //
   const higher_studies_html = fs.readFileSync(
     `${__dirname}/higher_studies/higher_studies.html`,
@@ -167,6 +179,9 @@ const server = http.createServer((req, res) => {
   const micron_logo = fs.readFileSync(`${__dirname}/images/micron.png`);
   const chatbot_image = fs.readFileSync(`${__dirname}/images/chatbot.png`);
   const search_image = fs.readFileSync(`${__dirname}/images/search.png`);
+  const placements_image = fs.readFileSync(
+    `${__dirname}/images/placements.jpg`
+  );
   // console.log(`${__dirname}/images/search.png`);
 
   // ============================= IMAGES ABOUT PAGE ========================================//
@@ -232,16 +247,19 @@ const server = http.createServer((req, res) => {
   } else if (pathname === "/images/chatbot.png") {
     res.writeHead(200, { "Content-Type": "image/png" });
     res.end(chatbot_image);
+  } else if (pathname === "/images/placements.jpg") {
+    res.writeHead(200, { "Content-type": "image/jpg" });
+    res.end(placements_image);
   }
 
   //============================================ ABOUT PAGE ======================================================//
-  else if (pathname === "/about/about.html") {
+  else if (pathname === "/about") {
     res.writeHead(200, { "Content-type": "text/html" });
     res.end(about_html);
-  } else if (pathname === "/about/about.css") {
+  } else if (pathname === "/about.css") {
     res.writeHead(200, { "Content-type": "text/css" });
     res.end(about_css);
-  } else if (pathname === "/about/about.js") {
+  } else if (pathname === "/about.js") {
     res.writeHead(200, { "Content-type": "application/javascript" });
     res.end(about_js);
   }
@@ -528,14 +546,43 @@ const server = http.createServer((req, res) => {
   }
 
   //================================================== PLACEMENTS PAGE ======================================================//
-  else if (pathname === "/placements/placements.html") {
+  else if (pathname === "/placements") {
     console.log("requested for the placements page");
+    // console.log(placementsObj);
+    let companyCardHTML = "";
+    for (company in placementsObj) {
+      const companyObj = placementsObj[company];
+      console.log(`I am the ${companyObj.company_name}'s Object :)`);
+      // console.log(companyObj);
+      // logo_link, company_name, company_id, description, link
+
+      // replacing the logo in the company_card
+      let output = company_card.replace(/{%LOGO_LINK%}/g, companyObj.logo_link);
+
+      // replacing the company_name in the company_card
+      output = output.replace(/{%COMPANY_NAME%}/g, companyObj.company_name);
+
+      // replacing the description in the company_card
+      output = output.replace(/{%DESCRIPTION%}/g, companyObj.description);
+
+      // replacing the link to the website in the company_card
+      output = output.replace(/{%LINK%}/g, companyObj.link);
+
+      companyCardHTML += output;
+    }
+
+    placements_page = placements_page.replace(
+      /{%COMPANY_CARDS%}/g,
+      companyCardHTML
+    );
+
+    console.log(companyCardHTML);
     res.writeHead(200, { "Content-type": "text/html" });
-    res.end(placements_html);
-  } else if (pathname === "/placements/placements.css") {
+    res.end(placements_page);
+  } else if (pathname === "/placements.css") {
     res.writeHead(200, { "Content-type": "text/css" });
     res.end(placements_css);
-  } else if (pathname === "/placements/placements.js") {
+  } else if (pathname === "/placements.js") {
     res.writeHead(200, { "Content-type": "application/javascript" });
     res.end(placements_js);
   }
@@ -669,7 +716,7 @@ const server = http.createServer((req, res) => {
             );
             // this is faculty_details_page
             console.log("this is faculty_details_page");
-            console.log(faculty_details_page);
+            // console.log(faculty_details_page);
             res.writeHead(200, { "Content-type": "text/html" });
             res.end(faculty_details_page);
           }

@@ -40,18 +40,19 @@ module.exports = (
             professor.name
           );
           output = output.replace(/{%EMAIL_ID%}/g, professor.email_id);
-          output = output.replace(
-            /{%SCHOOL_NAME%}/g,
-            facultyObj[school].school_name
-          );
           output = output.replace(/{%LINK%}/g, professor.link);
 
           if (professor.name === "") {
+            output = output.replace(/{%SCHOOL_NAME%}/g, professor.school_name);
             faculty_details_page = faculty_details_page.replace(
               /{%PROFESSOR_STRING%}/g,
               ""
             );
           } else {
+            output = output.replace(
+              /{%SCHOOL_NAME%}/g,
+              facultyObj[school].school_name
+            );
             faculty_details_page = faculty_details_page.replace(
               /{%PROFESSOR_STRING%}/g,
               "PROFESSORS"

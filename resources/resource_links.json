@@ -2,7 +2,7 @@
   {
     "domain_number": 1,
     "domain_id": "languages",
-    "domain_name": "languages",
+    "domain_name": "Programming Languages",
     "sub_domains": [
       {
         "sub_domain_id": "c",

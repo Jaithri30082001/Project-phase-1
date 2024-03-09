@@ -1,0 +1,32 @@
+{
+  "GRE": {
+    "name_of_the_exam": "",
+    "link": "",
+    "logo": "",
+    "description": ""
+  },
+  "GMAT": {
+    "name_of_the_exam": "",
+    "link": "",
+    "logo": "",
+    "description": ""
+  },
+  "TOEFL": {
+    "name_of_the_exam": "",
+    "link": "",
+    "logo": "",
+    "description": ""
+  },
+  "IELTS": {
+    "name_of_the_exam": "",
+    "link": "",
+    "logo": "",
+    "description": ""
+  },
+  "GRE Biology Test": {
+    "name_of_the_exam": "",
+    "link": "",
+    "logo": "",
+    "description": ""
+  }
+}
