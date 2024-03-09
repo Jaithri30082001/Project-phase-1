@@ -97,8 +97,12 @@ const server = http.createServer((req, res) => {
 
   const placementsObj = JSON.parse(placements_json);
   // ========================================= HIGHER STUDIES ===================================================== //
-  const higher_studies_html = fs.readFileSync(
-    `${__dirname}/higher_studies/higher_studies.html`,
+  let higher_studies_page = fs.readFileSync(
+    `${__dirname}/higher_studies/templates/higher_studies_page.html`,
+    "utf-8"
+  );
+  const exam_card = fs.readFileSync(
+    `${__dirname}/higher_studies/templates/exam_card.html`,
     "utf-8"
   );
   const higher_studies_css = fs.readFileSync(
@@ -109,6 +113,13 @@ const server = http.createServer((req, res) => {
     `${__dirname}/higher_studies/higher_studies.js`,
     "utf-8"
   );
+
+  const exam_details_json = fs.readFileSync(
+    `${__dirname}/higher_studies/exam_details.json`,
+    "utf-8"
+  );
+
+  const examDetailsObj = JSON.parse(exam_details_json);
   // ============================================== FACULTY ======================================================= //
   let faculty_schools_page = fs.readFileSync(
     `${__dirname}/faculty/templates/faculty_schools_page.html`,
@@ -159,12 +170,12 @@ const server = http.createServer((req, res) => {
 
   // ============================================================== EVENTS ============================================================ //
 
-  const events_html = fs.readFileSync(
-    `${__dirname}/events/events.html`,
-    "utf-8"
-  );
-  const events_css = fs.readFileSync(`${__dirname}/events/events.css`, "utf-8");
-  const events_js = fs.readFileSync(`${__dirname}//events/events.js`, "utf-8");
+  // const events_html = fs.readFileSync(
+  //   `${__dirname}/events/events.html`,
+  //   "utf-8"
+  // );
+  // const events_css = fs.readFileSync(`${__dirname}/events/events.css`, "utf-8");
+  // const events_js = fs.readFileSync(`${__dirname}//events/events.js`, "utf-8");
 
   // ============================================ IMAGES HOME PAGE==============================================================//
   const campus_life_image = fs.readFileSync(
@@ -179,9 +190,14 @@ const server = http.createServer((req, res) => {
   const micron_logo = fs.readFileSync(`${__dirname}/images/micron.png`);
   const chatbot_image = fs.readFileSync(`${__dirname}/images/chatbot.png`);
   const search_image = fs.readFileSync(`${__dirname}/images/search.png`);
+  const resources_image = fs.readFileSync(`${__dirname}/images/resources.jpg`);
   const placements_image = fs.readFileSync(
     `${__dirname}/images/placements.jpg`
   );
+  const higher_studies_image = fs.readFileSync(
+    `${__dirname}/images/higher_studies.jpg`
+  );
+  const school_image = fs.readFileSync(`${__dirname}/images/school.jpg`);
   // console.log(`${__dirname}/images/search.png`);
 
   // ============================= IMAGES ABOUT PAGE ========================================//
@@ -250,6 +266,15 @@ const server = http.createServer((req, res) => {
   } else if (pathname === "/images/placements.jpg") {
     res.writeHead(200, { "Content-type": "image/jpg" });
     res.end(placements_image);
+  } else if (pathname === "/images/higher_studies.jpg") {
+    res.writeHead(200, { "Content-type": "image/jpg" });
+    res.end(higher_studies_image);
+  } else if (pathname === "/images/resources.jpg") {
+    res.writeHead(200, { "Content-type": "image/jpg" });
+    res.end(resources_image);
+  } else if (pathname === "/images/school.jpg") {
+    res.writeHead(200, { "Content-type": "image/jpg" });
+    res.end(school_image);
   }
 
   //============================================ ABOUT PAGE ======================================================//
@@ -380,6 +405,7 @@ const server = http.createServer((req, res) => {
             );
 
             // replacing the domain id in the link
+
             output = output.replace(
               /{%DOMAIN_ID%}/g,
               resourcesObj[query.domain_id]["domain_id"]
@@ -405,6 +431,7 @@ const server = http.createServer((req, res) => {
           );
 
         // =================== REPLACING THE SUB DOMAIN NAME ====================================================//
+        console.log(subdomainObj.sub_domain_name);
         resources_topics_in_sub_domains_card =
           resources_topics_in_sub_domains_card.replace(
             /{%SUB_DOMAIN_NAME%}/g,
@@ -493,6 +520,8 @@ const server = http.createServer((req, res) => {
 
       const topicsLinksArray = topicsObj["links"];
 
+      // console.log(topicsObj.topic_name);
+
       // ================================ REPLACING THE DATA IN THE LINKS(FROM TOPICS) CARD =============================== //
       const topicLinksCardsHTML = topicsLinksArray
         .map((link) => {
@@ -531,7 +560,7 @@ const server = http.createServer((req, res) => {
       // =================================== REPLACING THE PLACEHOLDER WITH THE SUB DOMAIN NAME ==================================== //
       resources_in_sub_domains_card = resources_in_sub_domains_card.replace(
         /{%SUB_DOMAIN_NAME%}/g,
-        subdomainObj.sub_domain_name
+        topicsObj.topic_name
       );
 
       res.writeHead(200, { "Content-type": "text/html" });
@@ -576,7 +605,7 @@ const server = http.createServer((req, res) => {
       companyCardHTML
     );
 
-    console.log(companyCardHTML);
+    // console.log(companyCardHTML);
     res.writeHead(200, { "Content-type": "text/html" });
     res.end(placements_page);
   } else if (pathname === "/placements.css") {
@@ -588,14 +617,51 @@ const server = http.createServer((req, res) => {
   }
 
   //=================================================== HIGHER STUDIES ========================================================//
-  else if (pathname === "/higher_studies/higher_studies.html") {
+  else if (pathname === "/higher_studies") {
     console.log("requested for the higher studies page");
+    // console.log(examDetailsObj);
+    let examCardHTML = "";
+    for (exam in examDetailsObj) {
+      const examObj = examDetailsObj[exam];
+      // console.log(`I am ${examObj.name_of_the_exam}'s Object :)`);
+      // console.log(exam);
+      // name_of_the_exam, link, description, syllabus
+
+      //{%NAME_OF_THE_EXAM%}, {%DESCRIPTION%}, {%SYLLABUS%},{%LINK%}
+      // replacing the name_of_the_exam in the exam_card
+
+      let output = exam_card.replace(
+        /{%NAME_OF_THE_EXAM%}/g,
+        examObj.name_of_the_exam
+      );
+
+      output = output.replace(/{%SHORT%}/g, exam);
+      // replacing the link in the exam_card
+      output = output.replace(/{%LINK%}/g, examObj.link);
+
+      // replacing the description in the exam_card
+      output = output.replace(/{%DESCRIPTION%}/g, examObj.description);
+
+      // replacing the syllabus in the exam_card
+      output = output.replace(/{%SYLLABUS%}/g, examObj.syllabus);
+
+      examCardHTML += output;
+    }
+
+    // console.log(examCardHTML);
+    // console.log("I am higher studies page ");
+    // console.log(higher_studies_page);
+
+    higher_studies_page = higher_studies_page.replace(
+      /{%EXAMS_CARDS%}/g,
+      examCardHTML
+    );
     res.writeHead(200, { "Content-type": "text/html" });
-    res.end(higher_studies_html);
-  } else if (pathname === "/higher_studies/higher_studies.css") {
+    res.end(higher_studies_page);
+  } else if (pathname === "/higher_studies.css") {
     res.writeHead(200, { "Content-type": "text/css" });
     res.end(higher_studies_css);
-  } else if (pathname === "/higher_studies/higher_studies.js") {
+  } else if (pathname === "/higher_studies.js") {
     res.writeHead(200, { "Content-type": "application/javascript" });
     res.end(higher_studies_js);
   }
@@ -671,7 +737,7 @@ const server = http.createServer((req, res) => {
             // console.log(departmentsArray);
             const departmentCardsHTML = departmentsArray
               .map((department) => {
-                console.log(department.department_name);
+                // console.log(department.department_name);
                 // replacing the department name
                 let output = faculty_department_cards.replace(
                   /{%DEPARTMENT_NAME%}/g,
@@ -732,15 +798,15 @@ const server = http.createServer((req, res) => {
           facultyObj[school].school_id.toLowerCase()
         ) {
           const departmentsArray = facultyObj[school].departments;
-          console.log(departmentsArray);
+          // console.log(departmentsArray);
           const departmentObj = departmentsArray.find(
             (obj) =>
               obj.department_id.toLowerCase() ===
               query.department_id.toLowerCase()
           );
 
-          console.log("this is the object");
-          console.log(departmentObj);
+          // console.log("this is the object");
+          // console.log(departmentObj);
           faculty_details_page = replace_faculty_details(
             facultyObj,
             faculty_details_card,

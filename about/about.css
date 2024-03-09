@@ -66,6 +66,7 @@ html {
   align-items: center;
   gap: 10px;
   margin: 10px;
+  padding: 2%;
 }
 
 .intro-image-custom {
@@ -103,7 +104,8 @@ html {
   color: #95686c;
   font-family: poppins;
   font-size: 18px;
-  margin: 0;
+  /* margin: 0; */
+  padding: 2%;
 }
 @keyframes slideInImage {
   from {
@@ -146,12 +148,13 @@ html {
   align-items: center;
   gap: 20px;
   margin: 10px;
-  padding: 5%;
+  padding: 2%;
 }
 
 .mission-image-custom {
   justify-content: center;
   animation: slideInImage 3s ease forwards;
+  padding: 15px;
   opacity: 0;
 }
 .mission-content-custom {
@@ -161,7 +164,6 @@ html {
   animation: slideInContent 3s ease forwards;
   opacity: 0;
   text-align: center;
-  border-color: #95686c;
   /* background-color: #f4f4f4; */
   padding: 12px;
   border: 2px solid #981f2b;
@@ -172,7 +174,6 @@ html {
   color: #981f2b;
   font-family: poppins;
   font-size: 50px;
-  margin: 0;
 }
 
 .mission-content-custom h4 {
@@ -187,7 +188,8 @@ html {
   font-family: poppins;
   font-size: 18px;
   font-weight: 300;
-  margin: 0;
+  /* margin: 0; */
+  padding: 2%;
 }
 
 .mission-image-custom {
@@ -227,7 +229,9 @@ html {
 /* features and overview */
 .features-overview-custom {
   padding-top: 3%;
-  padding-bottom: 8%;
+  padding-bottom: 3%;
+  padding-left: 3%;
+  padding-right: 3%;
 }
 
 .overview-custom h2 {
@@ -269,13 +273,13 @@ html {
 .features-custom #feature h4 {
   color: #981f2b;
   font-family: poppins;
-  font-size: 40px;
+  font-size: 30px;
 }
 
 .features-custom #feature p {
   color: #84262ea2;
   font-family: poppins;
-  font-size: 25px;
+  font-size: 20px;
 }
 
 /* divider - 1 */
@@ -313,7 +317,7 @@ html {
 .faqs-custom #faq {
   display: grid;
   grid-template-columns: 5fr 1fr;
-  height: 100%;
+  height: 90%;
   width: 75%;
   border-radius: 13px;
   font-size: 25px;
