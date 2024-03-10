@@ -168,6 +168,21 @@ const server = http.createServer((req, res) => {
     "utf-8"
   );
 
+  // =============================================================== CHATBOT =============================================================//
+  let chatbot_html = fs.readFileSync(
+    `${__dirname}/chatbot/chatbot.html`,
+    "utf-8"
+  );
+
+  const chatbot_css = fs.readFileSync(
+    `${__dirname}/chatbot/chatbot.css`,
+    "utf-8"
+  );
+
+  const chatbot_js = fs.readFileSync(
+    `${__dirname}/chatbot/chatbot.js`,
+    "utf-8"
+  );
   // ============================================================== EVENTS ============================================================ //
 
   // const events_html = fs.readFileSync(
@@ -190,6 +205,9 @@ const server = http.createServer((req, res) => {
   const micron_logo = fs.readFileSync(`${__dirname}/images/micron.png`);
   const chatbot_image = fs.readFileSync(`${__dirname}/images/chatbot.png`);
   const search_image = fs.readFileSync(`${__dirname}/images/search.png`);
+  const arrow_image = fs.readFileSync(`${__dirname}/images/arrow.png`);
+  const close_image = fs.readFileSync(`${__dirname}/images/close.png`);
+  const loading_gif = fs.readFileSync(`${__dirname}/images/loading.gif`);
   const resources_image = fs.readFileSync(`${__dirname}/images/resources.jpg`);
   const placements_image = fs.readFileSync(
     `${__dirname}/images/placements.jpg`
@@ -198,6 +216,7 @@ const server = http.createServer((req, res) => {
     `${__dirname}/images/higher_studies.jpg`
   );
   const school_image = fs.readFileSync(`${__dirname}/images/school.jpg`);
+
   // console.log(`${__dirname}/images/search.png`);
 
   // ============================= IMAGES ABOUT PAGE ========================================//
@@ -263,6 +282,9 @@ const server = http.createServer((req, res) => {
   } else if (pathname === "/images/chatbot.png") {
     res.writeHead(200, { "Content-Type": "image/png" });
     res.end(chatbot_image);
+  } else if (pathname === "/images/arrow.png") {
+    res.writeHead(200, { "Content-Type": "image/png" });
+    res.end(arrow_image);
   } else if (pathname === "/images/placements.jpg") {
     res.writeHead(200, { "Content-type": "image/jpg" });
     res.end(placements_image);
@@ -275,6 +297,12 @@ const server = http.createServer((req, res) => {
   } else if (pathname === "/images/school.jpg") {
     res.writeHead(200, { "Content-type": "image/jpg" });
     res.end(school_image);
+  } else if (pathname === "/images/close.png") {
+    res.writeHead(200, { "Content-type": "image/png" });
+    res.end(close_image);
+  } else if (pathname === "/images/loading.gif") {
+    res.writeHead(200, { "Content-type": "image/gif" });
+    res.end(loading_gif);
   }
 
   //============================================ ABOUT PAGE ======================================================//
@@ -830,6 +858,17 @@ const server = http.createServer((req, res) => {
     res.end(faculty_js);
   }
 
+  // ============================================= CHATBOT =============================================//
+  else if (pathname === "/chatbot") {
+    res.writeHead(200, { "Content-type": "text/html" });
+    res.end(chatbot_html);
+  } else if (pathname === "/chatbot.css") {
+    res.writeHead(200, { "Content-type": "text/css" });
+    res.end(chatbot_css);
+  } else if (pathname === "/chatbot.js") {
+    res.writeHead(200, { "Content-type": "application/javascript" });
+    res.end(chatbot_js);
+  }
   //===========================================================================================//
   // // for events page
   // else if (pathname === "/events/events.html") {
