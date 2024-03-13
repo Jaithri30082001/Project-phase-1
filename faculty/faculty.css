@@ -375,3 +375,11 @@ footer {
 .footer-contact p {
   margin: 5px 0;
 }
+
+.iframeContainer {
+  position: fixed;
+  right: 2%;
+  bottom: 2%;
+  z-index: 100;
+  border: none;
+}

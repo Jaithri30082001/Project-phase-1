@@ -31,15 +31,23 @@
     />
 
     <!-- chatbot files -->
-    <iframe src="/chatbot"></iframe>
-    <link rel="stylesheet" href="/chatbot.css" />
+    <!-- <iframe src="/chatbot"></iframe> -->
+    <!-- <link rel="stylesheet" href="/chatbot.css" /> -->
+    <link rel="preload" as="document" href="/chatbot" />
+    <script defer src="chatbot_toggler.js"></script>
     <script defer src="/chatbot.js"></script>
   </head>
 
   <!-- body -->
   <body>
     <!-- header -->
+
+    <!-- chatbot frame -->
+    <div class="iframeContainer">
+      <iframe src="/chatbot" frameborder="0"></iframe>
+    </div>
     <!-- <img src="../images/chatbot.png" alt="Chatbot Icon" id="chatbot-icon" /> -->
+
     <div class="header-custom">
       <div class="logo-custom"><a href="../index.html">G-ARKH</a></div>
 

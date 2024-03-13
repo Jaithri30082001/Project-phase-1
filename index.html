@@ -27,17 +27,21 @@
     <link rel="stylesheet" href="style.css" />
 
     <!-- chatbot files -->
-    <iframe src="/chatbot"></iframe>
-    <link rel="stylesheet" href="/chatbot.css">
+    
+    <!-- <link rel="stylesheet" href="/chatbot.css"> -->
     <script defer src="/chatbot.js"></script>
+    <link rel="preload" as="document" href="/chatbot">
+    <script defer src="chatbot_toggler.js"></script>
+    
     <title>G-ARKH</title>
   </head>
 
   <!-- body -->
   <body>
     <!-- header -->
-    
-    <!-- <span id="chatbot-icon">{%CHATBOT_ICON%}</span> -->
+    <!-- chatbot frame -->
+    <div class="iframeContainer"><iframe src="/chatbot" frameBorder=0></iframe></div>
+     <!-- <img src="/images/chatbot.png" alt="Chatbot Icon" id="chatbot-icon" />  -->
     <div class="header-custom">
       <div class="logo-custom"><a href="../index.html">G-ARKH</a></div>
 
@@ -419,6 +423,7 @@
 
     <script defer src="script.js"></script>
     <script defer src="scroll.js"></script>
+    
 
     <!-- materialize -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>

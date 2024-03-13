@@ -183,6 +183,12 @@ const server = http.createServer((req, res) => {
     `${__dirname}/chatbot/chatbot.js`,
     "utf-8"
   );
+
+  const chatbot_toggler_js = fs.readFileSync(
+    `${__dirname}/chatbot/chatbot_toggler.js`,
+    "utf-8"
+  );
+
   // ============================================================== EVENTS ============================================================ //
 
   // const events_html = fs.readFileSync(
@@ -250,7 +256,6 @@ const server = http.createServer((req, res) => {
     res.writeHead(200, { "Content-type": "application/javascript" });
     res.end(scroll_animation_js);
   }
-
   // ================================== SENDING IMAGES (HOME PAGE)============================ //
   else if (pathname === "/images/search.png") {
     res.writeHead(200, { "Content-Type": "image/png" });
@@ -381,10 +386,10 @@ const server = http.createServer((req, res) => {
           return output;
         })
         .join("");
-      // console.log(
-      //   "/////////////////////////////// THE CARD //////////////////////////////////////////////////////"
-      // );
-      // console.log(subdomainCardsHTML);
+      console.log(
+        "/////////////////////////////// THE CARD //////////////////////////////////////////////////////"
+      );
+      console.log(subdomainCardsHTML);
 
       // ================== REPLACING THE SUB_DOMAINS_CARDS WITH THE CREATED CARD (DATA ADDED) ================== //
 
@@ -403,6 +408,8 @@ const server = http.createServer((req, res) => {
         /{%DOMAIN_NAME%}/g,
         resourcesObj[query.domain_id]["domain_name"]
       );
+
+      console.log(resourcesObj[query.domain_id]);
 
       console.log("I am at length 1");
       res.end(resources_incard);
@@ -868,7 +875,11 @@ const server = http.createServer((req, res) => {
   } else if (pathname === "/chatbot.js") {
     res.writeHead(200, { "Content-type": "application/javascript" });
     res.end(chatbot_js);
+  } else if (pathname === "/chatbot_toggler.js") {
+    res.writeHead(200, { "Content-type": "application/javascript" });
+    res.end(chatbot_toggler_js);
   }
+
   //===========================================================================================//
   // // for events page
   // else if (pathname === "/events/events.html") {

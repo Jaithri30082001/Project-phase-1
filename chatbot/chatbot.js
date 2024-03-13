@@ -8,8 +8,8 @@ const chatbotCloseBtn = document.querySelector(".close-button");
 const inputInitHeight = chatInput.scrollHeight;
 
 let userMessage;
-const API_KEY = "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";
-
+const API_KEY = "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";
+// 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
 const createChatLi = (message, className) => {
   // create a chat <li> element with passed message and className
   const chatLi = document.createElement("li");
@@ -63,10 +63,12 @@ const generateResponse = (incomingChatLi) => {
 const handleChat = () => {
   userMessage = chatInput.value.trim();
   //   console.log(userMessage);
-
+  // console.log(inputInitHeight);
   chatInput.addEventListener("input", () => {
     // adjust the height of the input textarea based on its content
+
     chatInput.style.height = `${inputInitHeight}px`;
+    console.log(chatInput.style.height);
     chatInput.style.height = `${chatInput.scrollHeight}px`;
   });
   if (!userMessage) return;
@@ -90,12 +92,11 @@ sendChatBtn.addEventListener("click", handleChat);
 
 // Listen for "keypress" event on the text area
 chatInput.addEventListener("keydown", (event) => {
-  // Check if the Enter key was pressed (key code 13)
-  if (event.keyCode === 13 && !event.shiftKey && window.innerWidth > 800) {
-    // if enter key is pressed without shift key and the window width is greater than 800px, handle the chat
-    console.log("yes");
-    event.preventDefault();
-    handleChat();
+  // Check if the Enter key was pressed without the Shift key
+
+  if (event.key === "Enter" && !event.shiftKey) {
+    // event.preventDefault(); // Prevent the default Enter key behavior (newline)
+    handleChat(); // Handle sending the message
   }
 });
 

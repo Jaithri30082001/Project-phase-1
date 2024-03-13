@@ -615,3 +615,179 @@ html {
   transition: background-color 0.3s, transform 0.2s;
   z-index: 2;
 }
+
+.iframeContainer {
+  position: fixed;
+  right: 2%;
+  bottom: 2%;
+  z-index: 100;
+  border: none;
+}
+/* media queries */
+
+/* breakpoints = 1715 ( about section in the home page) - decrease the size of the image and adjust the button and the text size too
+
+                  1460 (welcome to g-arkh text in the home page) - decrease the text size)
+                  1260 (welcome to g-arkh text and the about section) - decrease the text size and remove the text from the about section
+                  1200 (same as above and then the divider content, and decrease the size of the image in the about section)
+                  1025 (add the button to the navigation bar and hide the navbar elements in the nav bar)
+                  850 ( decrease the font-size)
+                  */
+
+@media (max-width: 1700px) {
+}
+
+@media (max-width: 1480px) {
+  /* hero section styling */
+  #heading1-custom {
+    font-size: 70px;
+    color: white;
+  }
+
+  .slides-custom {
+    height: 500px;
+  }
+
+  /* dividers */
+
+  .divider-custom {
+    padding: 16px;
+    font-size: 20px;
+    max-width: 80%;
+    margin: 18px auto;
+    line-height: 1.5;
+  }
+
+  .quote-custom {
+    padding: 10px;
+  }
+
+  /* about section */
+
+  .about-custom {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+
+  .about-image-custom {
+    max-width: 100%;
+  }
+
+  .about-image-custom img {
+    width: 100%;
+  }
+
+  .about-description-custom h2 {
+    font-size: 30px;
+  }
+
+  .about-description-custom h4 {
+    font-size: 20px;
+  }
+
+  .about-description-custom p {
+    font-size: 15px;
+  }
+
+  .about-button2-custom {
+    top: 75%;
+    left: 50%;
+    font-size: 15px;
+  }
+
+  .about-button2-custom:hover {
+    top: 69%;
+    background-color: #981f2b;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  /* resources-section */
+
+  .content-custom h1 {
+    font-size: 40px;
+  }
+
+  .content-custom h3 {
+    font-size: 22px;
+  }
+
+  .carousel {
+    height: 600px;
+  }
+
+  .carousel .carousel-item {
+    padding: 17px;
+    transition: background-color 0.3s, transform 0.2s;
+    height: 420px;
+    width: 320px;
+  }
+
+  .carousel .carousel-item h3 {
+    font-size: 35px;
+  }
+
+  .carousel .carousel-item h5 {
+    font-size: 20px;
+  }
+
+  .about-button3-custom {
+    font-size: 15px;
+  }
+
+  /* placements */
+  .placements-section {
+    padding: 40px 0;
+  }
+
+  .placements-heading h2 {
+    font-size: 28px;
+  }
+
+  .placement-slider-custom .placement-slide-item {
+    background-color: white;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    text-align: center;
+    perspective: 100px;
+    transition: transform 1s;
+    flex: 0 0 auto;
+  }
+
+  .placement-slide-item:hover {
+    transform: translateZ(20px);
+  }
+
+  .placement-slide-item img {
+    max-width: 100px;
+    height: auto;
+  }
+
+  .placement-slide-item h3 {
+    font-size: 24px;
+    color: #981f2b;
+    margin: 10px 0;
+  }
+
+  .placement-slide-item p {
+    font-size: 16px;
+    color: #95686c;
+    margin: 5px 0;
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+}
+
+@media (max-width: 1215px) {
+}

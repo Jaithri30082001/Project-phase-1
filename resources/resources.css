@@ -77,6 +77,14 @@ html {
   z-index: 2;
 }
 
+.iframeContainer {
+  position: fixed;
+  right: 2%;
+  bottom: 2%;
+  z-index: 100;
+  border: none;
+}
+
 /* resources_image styling */
 
 #resources-image {
