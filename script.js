@@ -867,6 +867,7 @@ const server = http.createServer((req, res) => {
 
   // ============================================= CHATBOT =============================================//
   else if (pathname === "/chatbot") {
+    console.log("chatbot_html sent");
     res.writeHead(200, { "Content-type": "text/html" });
     res.end(chatbot_html);
   } else if (pathname === "/chatbot.css") {
